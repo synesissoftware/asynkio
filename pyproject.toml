@@ -1,0 +1,41 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [
+	"setuptools>=61.0",
+	"wheel",
+]
+
+[project]
+authors = [
+	{ name = "Matt Wilson", email = "matthew@synesis.com.au" },
+]
+dependencies = [
+	"asyncio",
+	"diagnosticism",
+]
+description = "Path parsing library"
+license = { text = "BSD-3" }
+name = "asynkio"
+readme = "README.md"
+requires-python = ">=3.11"
+version = "0.0.0"
+
+[project.urls]
+Changelog = "https://github.com/synesissoftware/asynkio/releases"
+Homepage = "https://github.com/synesissoftware/asynkio"
+Issues = "https://github.com/synesissoftware/asynkio/issues"
+
+[project.optional-dependencies]
+dev = [
+	"aiofiles",
+	"pyclasp",
+	"pyclasp>=0.8.10",
+	"pytest>=7.4.4",
+]
+test = [
+	"aiofiles",
+	"pyclasp",
+	"pyclasp>=0.8.10",
+	"pytest>=7.4.4",
+]
+

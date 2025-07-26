@@ -1,0 +1,19 @@
+{
+	"[python]": {
+		"diffEditor.ignoreTrimWhitespace": false,
+		"editor.insertSpaces": true,
+		"editor.rulers": [ 51, 61, 76 ],
+		"editor.tabSize": 4,
+	},
+	"editor.insertSpaces": false,
+	"editor.renderWhitespace": "all",
+	"editor.tabSize": 2,
+	"files.exclude": {
+		"**/__pycache__": true,
+		"**/*.egg-info": true,
+		"**/*.swp": true,
+	},
+	"files.trimTrailingWhitespace": true,
+	"python.analysis.typeCheckingMode": "standard",
+	"python.languageServer": "Pylance",
+}
