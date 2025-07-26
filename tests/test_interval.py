@@ -1,10 +1,10 @@
 #! /usr/bin/env python3
 
 # ######################################################################## #
-# File:     tests/test_timer.py
+# File:     tests/test_interval.py
 #
 # Created:  25th July 2025
-# Updated:  25th July 2025
+# Updated:  26th July 2025
 #
 # Author:   Matthew Wilson
 #
@@ -38,7 +38,7 @@ async def run_sleep():
         t1 = t2
 
 
-async def run_delay():
+async def run_interval():
 
     d.trace()
 
@@ -67,7 +67,7 @@ async def main():
 
     d.trace()
 
-    await asyncio.gather(run_sleep(), run_delay())
+    await asyncio.gather(run_sleep(), run_interval())
 
 
 if __name__ == "__main__":
