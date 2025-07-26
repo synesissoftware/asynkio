@@ -14,6 +14,13 @@
 # ######################################################################## #
 
 
+from asynkio.time import (
+    Duration,
+    Instant,
+    Interval,
+    # interval,
+)
+
 import asyncio
 import pyclasp as clasp
 import diagnosticism as d
@@ -21,53 +28,99 @@ import diagnosticism.severity as sev
 import time
 
 
-async def run_sleep():
+def _delta_as_ns(
+    f: Instant,
+    t: Instant,
+) -> int:
+
+    delta = int(t) - int(f)
+
+    return delta
+
+def _clipped_delta_as_ns(
+    f: Instant,
+    t: Instant,
+    quantum_ns : int
+) -> str:
+
+    delta = int(t) - int(f)
+    q, r = divmod(delta, quantum_ns)
+
+    # d.dbgfl(f, t, delta, q, r)
+
+    return Duration.from_nanos(r)
+
+
+async def run_asyncio_sleep(
+    label : str,
+    timeout_ms : int,
+    synchronous_sleep_ms : int,
+):
 
     d.trace()
 
-    t1 = time.time_ns()
+    t0 = Instant.now()
+
+    t1 = t0
 
     while True:
 
-        await asyncio.sleep(1)
+        if synchronous_sleep_ms:
 
-        t2 = time.time_ns()
+            time.sleep(synchronous_sleep_ms / 1_000)
 
-        d.log(sev.NOTICE, f"{d.func()} slept for {t2 - t1}")
+        await asyncio.sleep(timeout_ms / 1_000)
+
+        t2 = Instant.now()
+
+        d.log(sev.NOTICE, f"{label} slept for {_delta_as_ns(t1, t2):,}; ∆={_clipped_delta_as_ns(t0, t2, timeout_ms * 1_000_000)}")
 
         t1 = t2
 
 
-async def run_interval():
+async def run_asynkio_interval(
+    label : str,
+    timeout_ms : int,
+    synchronous_sleep_ms : int,
+):
 
     d.trace()
 
-    t0 = time.perf_counter_ns()
+    interval = Interval(Duration.from_millis(timeout_ms))
+
+    t0 = Instant.now()
+
+    t1 = t0
 
     count = 0
-
-    t1 = time.time_ns()
 
     delta = 1
 
     while True:
 
-        await asyncio.sleep(delta)
+        if synchronous_sleep_ms:
 
-        t2 = time.time_ns()
+            time.sleep(synchronous_sleep_ms / 1_000)
 
-        d.log(sev.NOTICE, f"{d.func()} slept for {t2 - t1}")
+        await interval
+
+        t2 = Instant.now()
+
+        d.log(sev.NOTICE, f"{label} slept for {_delta_as_ns(t1, t2):,}; ∆={_clipped_delta_as_ns(t0, t2, timeout_ms * 1_000_000)}")
 
         t1 = t2
-
-        delta = 0.8
 
 
 async def main():
 
     d.trace()
 
-    await asyncio.gather(run_sleep(), run_interval())
+    await asyncio.gather(
+        run_asyncio_sleep(   "asyncio.sleep     ", 5_000, synchronous_sleep_ms=0),
+        run_asynkio_interval("asynkio.interval  ", 5_000, synchronous_sleep_ms=0),
+        run_asyncio_sleep(   "asyncio.sleep    S", 5_000, synchronous_sleep_ms=1_000),
+        run_asynkio_interval("asynkio.interval S", 5_000, synchronous_sleep_ms=1_000),
+    )
 
 
 if __name__ == "__main__":

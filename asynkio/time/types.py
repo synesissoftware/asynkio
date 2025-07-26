@@ -157,6 +157,14 @@ class Duration:
 
         return self.__format__('')
 
+    def __repr__(self):
+
+        return f"<{self.__module__}.{self.__class__.__name__}: _duration={self._duration}>"
+
+    def __int__(self):
+
+        return self._duration
+
 
 class Instant:
     """
@@ -179,6 +187,14 @@ class Instant:
         t_now_ns = time.time_ns()
 
         return Instant(t_now_ns)
+
+    def __repr__(self):
+
+        return f"<{self.__module__}.{self.__class__.__name__}: _t={self._t}>"
+
+    def __int__(self):
+
+        return self._t
 
     def __lt__(self, other):
         """
