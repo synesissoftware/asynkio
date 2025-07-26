@@ -157,29 +157,34 @@ class Duration:
 
         return self.__format__('')
 
+
 class Instant:
     """
-    A measurement of the clock.
+    Represents a moment in time.
     """
 
     def __init__(self, t_ns):
         """
-        Initialises with the current time instant (specified in
-        nanoseconds).
+        Initialises with the given time instant (specified in nanoseconds).
         """
 
         self._t = t_ns
 
-
     @staticmethod
     def now() -> Self:
+        """
+        Initialises with the current time instant.
+        """
 
         t_now_ns = time.time_ns()
 
         return Instant(t_now_ns)
 
-
     def __lt__(self, other):
+        """
+        Determines whether the called instance is less-than the `other`
+        instance of `Instant`.
+        """
 
         if isinstance(other, Instant):
 
@@ -187,8 +192,11 @@ class Instant:
 
         raise NotImplemented
 
-
     def __le__(self, other):
+        """
+        Determines whether the called instance is less-than-or-equal-to the
+        `other` instance of `Instant`.
+        """
 
         if isinstance(other, Instant):
 
@@ -196,8 +204,11 @@ class Instant:
 
         raise NotImplemented
 
-
     def __sub__(self, other):
+        """
+        Subtracts the `other` - which may be an instance of `Instant` or an
+        instance of `Duration` - from the called instance.
+        """
 
         if isinstance(other, Instant):
 
@@ -210,6 +221,9 @@ class Instant:
         return NotImplemented
 
     def __add__(self, other):
+        """
+        Adds the `other` instance of `Duration` to the called instance.
+        """
 
         if isinstance(other, Duration):
 
