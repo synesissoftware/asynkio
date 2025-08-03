@@ -2,6 +2,7 @@
 import time
 from typing import Self
 
+
 class Duration:
     """
     Represents a span of time.
@@ -16,8 +17,6 @@ class Duration:
         Creates a new instance from the number of nanoseconds represented by
         `to_ns - from_ns`.
         """
-
-        assert from_ns <= to_ns
 
         self._duration = to_ns - from_ns
 
@@ -86,7 +85,7 @@ class Duration:
         The fractional number of seconds contained by this instance.
         """
 
-        return self._duration / 1_000_000_000
+        return self._duration / 1_000_000_000.0
 
     def subsec_nanos(self) -> int:
         """
@@ -109,61 +108,224 @@ class Duration:
 
         return (self._duration % 1_000_000_000) // 1_000_000
 
-    def __format__(self, format_spec) -> str:
+    @staticmethod
+    def _scale_index(n : int) -> tuple[int, int]:
 
-        v = self._duration
+        _SCALES = [
+            1,
+            10,
+            100,
+            1_000,
+            10_000,
+            100_000,
+            1_000_000,
+            10_000_000,
+            100_000_000,
+            1_000_000_000,
+            10_000_000_000,
+            100_000_000_000,
+        ]
+
+        assert n > 0
+        assert len(_SCALES) == 12
+
+        if n >= 100_000_000_000:
+
+            return (11, _SCALES[11])
+
+        l = 0
+        h = 11
+
+        count = 0
+
+        while l <= h:
+
+            count += 1
+
+            assert count < 5, f"too many loops while trying to scale {n}"
+
+            m = (h + l) // 2
+
+            b = _SCALES[m]
+
+            if n == b:
+
+                return (m, b)
+
+            if n < b:
+
+                h = m
+
+                continue
+            else:
+                assert n > b
+
+                if n < b * 10:
+
+                    return (m, b)
+                else:
+
+                    l = m
+
+        return (11, _SCALES[11])
+
+    @staticmethod
+    def duration_to_string(
+        duration : Self | int,
+        format_spec : str = '',
+    ) -> str:
+
+        v = int(duration)
+
+        if v < 0:
+
+            v = -v
+            sign = '-'
+        else:
+
+            if '+' in format_spec:
+
+                sign = '+'
+            else:
+
+                sign = ''
 
         if v == 0:
 
             return "0s"
 
-        if v >= 1_000_000:
+        oom, divisor = Duration._scale_index(v)
 
-            if v >= 1_000_000_000:
+        suffixes = [
+            'ns',
+            'µs',
+            'ms',
+            's',
+        ]
+        suffix = suffixes[oom // 3]
 
-                q, r = divmod(v, 1_000_000_000)
+        def fmt(sign, whole, frac, suffix):
 
-                if r > 1_000_000:
+            if frac == 0:
 
-                    return f"{self._duration / 1_000_000_000.0:.4}s"
-                else:
-
-                    return f"{self._duration // 1_000_000_000}s"
+                return f"{sign}{whole}{suffix}"
             else:
 
-                q, r = divmod(v, 1_000_000)
+                if whole > 999:
 
-                if r > 1_000:
+                    return f"{sign}{whole}{suffix}"
 
-                    return f"{self._duration / 1_000_000.0:.4}ms"
-                else:
+                if whole > 99:
 
-                    return f"{self._duration // 1_000_000}ms"
+                    return f"{sign}{whole}.{frac}{suffix}"
 
-        if v >= 1_000:
+                if whole > 9:
 
-            q, r = divmod(v, 1_000)
+                    return f"{sign}{whole}.{frac:02d}{suffix}"
 
-            if r > 1:
+                return f"{sign}{whole}.{frac}{suffix}"
 
-                return f"{self._duration / 1_000.0:.4}µs"
+        if oom >= 3:
+
+
+        if oom < 3:
+
+            return f"{sign}{v}{suffix}"
+        else:
+
+            divisor_0 = divisor // 1_000
+
+            i = oom % 3
+
+            if i == 0:
+
+                divisor_1 = 1_000
+            elif i == 1:
+
+                divisor_1 = 100
             else:
 
-                return f"{self._duration // 1_000}µs"
+                divisor_1 = 10
 
-        return f"{self._duration}ns"
 
-    def __str__(self):
+            v //= divisor_0
+
+            whole = v // divisor_1
+            frac = v - (whole * divisor_1)
+
+
+            return fmt(sign, whole, frac, suffix)
+
+    def __eq__(self, rhs : Self | float | int) -> bool:
+
+        if isinstance(rhs, Duration):
+
+            return self._duration == rhs._duration
+
+        if isinstance(rhs, (float, int)):
+
+            return self._duration == int(rhs)
+
+        return NotImplemented
+
+    def __format__(self, format_spec) -> str:
+
+        return self.duration_to_string(
+            self._duration,
+            format_spec=format_spec,
+        )
+
+    def __str__(self) -> str:
 
         return self.__format__('')
 
-    def __repr__(self):
+    def __repr__(self) -> str:
 
         return f"<{self.__module__}.{self.__class__.__name__}: _duration={self._duration}>"
 
-    def __int__(self):
+    def __int__(self) -> int:
 
         return self._duration
+
+    def __add__(self, rhs : Self) -> Self:
+
+        if isinstance(rhs, Duration):
+
+            return Duration.from_nanos(self._duration + rhs._duration)
+
+        return NotImplemented
+
+    def __sub__(self, rhs : Self) -> Self:
+
+        if isinstance(rhs, Duration):
+
+            return Duration.from_nanos(self._duration - rhs._duration)
+
+        return NotImplemented
+
+    def __mul__(self, rhs : float | int) -> Self:
+
+        if isinstance(rhs, float):
+
+            return Duration.from_nanos(int(self._duration * rhs))
+
+        if isinstance(rhs, int):
+
+            return Duration.from_nanos(self._duration * rhs)
+
+        return NotImplemented
+
+    def __truediv__(self, rhs : Self | float | int) -> Self:
+
+        if isinstance(rhs, (Duration, int)):
+
+            return Duration.from_nanos(self._duration / int(rhs))
+
+        if isinstance(rhs, float):
+
+            return Duration.from_nanos(int(self._duration / rhs))
+
+        return NotImplemented
 
 
 class Instant:
@@ -188,62 +350,62 @@ class Instant:
 
         return Instant(t_now_ns)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
 
         return f"<{self.__module__}.{self.__class__.__name__}: _t={self._t}>"
 
-    def __int__(self):
+    def __int__(self) -> int:
 
         return self._t
 
-    def __lt__(self, other):
+    def __lt__(self, rhs) -> bool:
         """
-        Determines whether the called instance is less-than the `other`
+        Determines whether the called instance is less-than the `rhs`
         instance of `Instant`.
         """
 
-        if isinstance(other, Instant):
+        if isinstance(rhs, Instant):
 
-            return self._t < other._t
+            return self._t < rhs._t
 
         raise NotImplemented
 
-    def __le__(self, other):
+    def __le__(self, rhs) -> bool:
         """
         Determines whether the called instance is less-than-or-equal-to the
-        `other` instance of `Instant`.
+        `rhs` instance of `Instant`.
         """
 
-        if isinstance(other, Instant):
+        if isinstance(rhs, Instant):
 
-            return self._t <= other._t
+            return self._t <= rhs._t
 
         raise NotImplemented
 
-    def __sub__(self, other):
+    def __sub__(self, rhs) -> Duration | Self:
         """
-        Subtracts the `other` - which may be an instance of `Instant` or an
+        Subtracts the `rhs` - which may be an instance of `Instant` or an
         instance of `Duration` - from the called instance.
         """
 
-        if isinstance(other, Instant):
+        if isinstance(rhs, Instant):
 
-            return Duration(other._t, self._t)
+            return Duration(rhs._t, self._t)
 
-        if isinstance(other, Duration):
+        if isinstance(rhs, Duration):
 
-            return Instant(self._t - other.as_nanos())
+            return Instant(self._t - rhs.as_nanos())
 
         return NotImplemented
 
-    def __add__(self, other):
+    def __add__(self, rhs) -> Self:
         """
-        Adds the `other` instance of `Duration` to the called instance.
+        Adds the `rhs` instance of `Duration` to the called instance.
         """
 
-        if isinstance(other, Duration):
+        if isinstance(rhs, Duration):
 
-            return Instant(self._t + other.as_nanos())
+            return Instant(self._t + rhs.as_nanos())
 
         return NotImplemented
 

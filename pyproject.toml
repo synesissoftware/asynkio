@@ -12,6 +12,7 @@ authors = [
 dependencies = [
 	"asyncio",
 	"diagnosticism",
+	"pytest>=8.4.1",
 ]
 description = "Path parsing library"
 license = { text = "BSD-3" }

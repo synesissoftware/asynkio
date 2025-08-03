@@ -27,6 +27,7 @@ source = { editable = "." }
 dependencies = [
     { name = "asyncio" },
     { name = "diagnosticism" },
+    { name = "pytest" },
 ]
 
 [package.optional-dependencies]
@@ -51,6 +52,7 @@ requires-dist = [
     { name = "pyclasp", marker = "extra == 'dev'", specifier = ">=0.8.10" },
     { name = "pyclasp", marker = "extra == 'test'" },
     { name = "pyclasp", marker = "extra == 'test'", specifier = ">=0.8.10" },
+    { name = "pytest", specifier = ">=8.4.1" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.4.4" },
     { name = "pytest", marker = "extra == 'test'", specifier = ">=7.4.4" },
 ]
