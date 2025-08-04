@@ -22,6 +22,9 @@ from asynkio.time import (
 )
 
 
+# ######################################
+# Duration
+
 def test_Duration_DURATION_0():
 
     duration = Duration(0, 0)
@@ -249,6 +252,9 @@ def test_Duration_MUL():
     assert Duration.from_nanos(50) == (d_100 * 0.5)
     assert Duration.from_nanos(200) == (d_100 * 2.0)
 
+
+# ######################################
+# Instant
 
 def test_Instant_CREATE():
 
