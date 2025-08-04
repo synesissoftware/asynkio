@@ -291,3 +291,9 @@ def test_Intant_REPR():
     assert "<asynkio.time.types.Instant: _t=123456>" == repr(Instant(123_456))
     assert "<asynkio.time.types.Instant: _t=123456789>" == repr(Instant(123_456_789))
     assert "<asynkio.time.types.Instant: _t=980123456789>" == repr(Instant(980_123_456_789))
+
+
+def test_Intant_INT():
+
+    assert 0 == Instant(0).__int__()
+    assert 123 == Instant(123).__int__()

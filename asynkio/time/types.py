@@ -281,6 +281,10 @@ class Duration:
         return f"<{self.__module__}.{self.__class__.__name__}: _duration={self._duration}>"
 
     def __int__(self) -> int:
+        """
+        Converts an instance into an integer, representing the number of
+        nanoseconds in the duration.
+        """
 
         return self._duration
 
@@ -350,6 +354,14 @@ class Instant:
     def __repr__(self) -> str:
 
         return f"<{self.__module__}.{self.__class__.__name__}: _t={self._t}>"
+
+    def __int__(self) -> int:
+        """
+        Converts an instance into an integer, representing the number of
+        nanoseconds since the epoch.
+        """
+
+        return self._t
 
     def __lt__(self, rhs) -> bool:
         """
