@@ -1,4 +1,8 @@
 
+from datetime import (
+    datetime,
+    timezone,
+)
 import time
 from typing import Self
 
@@ -7,6 +11,10 @@ class Duration:
     """
     Represents a span of time.
     """
+
+    __slots__ = (
+        "_duration",
+    )
 
     def __init__(
         self,
@@ -274,13 +282,20 @@ class Duration:
 
     def __str__(self) -> str:
 
-        return self.__format__('')
+        return self.duration_to_string(
+            self._duration,
+            format_spec='',
+        )
 
     def __repr__(self) -> str:
 
         return f"<{self.__module__}.{self.__class__.__name__}: _duration={self._duration}>"
 
     def __int__(self) -> int:
+        """
+        Converts an instance into an integer, representing the number of
+        nanoseconds in the duration.
+        """
 
         return self._duration
 
@@ -330,12 +345,25 @@ class Instant:
     Represents a moment in time.
     """
 
+    __slots__ = (
+        "_t",
+    )
+
     def __init__(self, t_ns):
         """
         Initialises with the given time instant (specified in nanoseconds).
         """
 
         self._t = t_ns
+
+    @staticmethod
+    def _t_ns_to_d_utc(t_ns : int) -> datetime:
+        """
+        Convert the number of nanoseconds since epoch into a datetime
+        instance assuming UTC.
+        """
+
+        return datetime.fromtimestamp(t_ns / 1_000_000_000.0, tz=timezone.utc)
 
     @staticmethod
     def now() -> Self:
@@ -347,11 +375,106 @@ class Instant:
 
         return Instant(t_now_ns)
 
+    @staticmethod
+    def instant_to_string(
+        instant : Self | int,
+        format_spec : str = '',
+    ) -> str:
+
+        typed = None
+
+        def set_type_or_raise(typed, t, c, b):
+
+            # local as_type
+
+            if typed is not None:
+
+                raise ValueError(f"cannot specify type `{t}` as type already specified as `{typed[0]}`")
+
+            else:
+
+                return (t, c, b)
+
+        show_plus = False
+        show_base = False
+
+        for c in format_spec:
+
+            print(f"c={c}")
+
+            if c == 'd':
+
+                typed = set_type_or_raise(typed, int, c, '')
+
+            if c == 'o':
+
+                typed = set_type_or_raise(typed, int, c, '0o')
+
+            if c == 'x':
+
+                typed = set_type_or_raise(typed, int, c, '0x')
+
+            if c == 'X':
+
+                typed = set_type_or_raise(typed, int, c, '0X')
+
+            if c == '+':
+
+                show_plus = True
+
+            if c == '#':
+
+                show_base = True
+
+        if typed:
+
+            if typed[0] == int:
+
+                fmt = ''
+
+                if show_plus:
+
+                    fmt += '+'
+
+                if show_base:
+
+                    fmt += '#'
+
+                fmt += typed[1]
+
+                return format(instant, fmt)
+            else:
+
+                return NotImplemented
+        else:
+
+            d = Instant._t_ns_to_d_utc(instant)
+
+            return d.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+
+    def __format__(self, format_spec) -> str:
+
+        return Instant.instant_to_string(
+            self._t,
+            format_spec=format_spec,
+        )
+
+    def __str__(self) -> str:
+
+        return Instant.instant_to_string(
+            self._t,
+            format_spec='',
+        )
+
     def __repr__(self) -> str:
 
         return f"<{self.__module__}.{self.__class__.__name__}: _t={self._t}>"
 
     def __int__(self) -> int:
+        """
+        Converts an instance into an integer, representing the number of
+        nanoseconds since the epoch.
+        """
 
         return self._t
 
