@@ -93,6 +93,11 @@ def test_Duration_DURATION_123_456_789_NANOSECONDS():
     assert "123.4ms" == str(duration)
 
 
+def test_Duration_REPR():
+
+    assert "<asynkio.time.types.Duration: _duration=0>" == repr(Duration.from_nanos(0))
+
+
 def test_Duration_STRINGS():
 
     assert "9ns" == str(Duration.from_nanos(9))
@@ -277,3 +282,12 @@ def test_Instant_CREATE():
     duration_1_3 = instant_3 - instant_1
 
     assert 123_000 == duration_1_3.as_nanos()
+
+
+def test_Intant_REPR():
+
+    assert "<asynkio.time.types.Instant: _t=0>" == repr(Instant(0))
+    assert "<asynkio.time.types.Instant: _t=123>" == repr(Instant(123))
+    assert "<asynkio.time.types.Instant: _t=123456>" == repr(Instant(123_456))
+    assert "<asynkio.time.types.Instant: _t=123456789>" == repr(Instant(123_456_789))
+    assert "<asynkio.time.types.Instant: _t=980123456789>" == repr(Instant(980_123_456_789))

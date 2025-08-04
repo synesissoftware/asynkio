@@ -347,7 +347,11 @@ class Instant:
 
         return Instant(t_now_ns)
 
-    def __lt__(self, rhs):
+    def __repr__(self) -> str:
+
+        return f"<{self.__module__}.{self.__class__.__name__}: _t={self._t}>"
+
+    def __lt__(self, rhs) -> bool:
         """
         Determines whether the called instance is less-than the `rhs`
         instance of `Instant`.
