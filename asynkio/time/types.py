@@ -225,9 +225,6 @@ class Duration:
 
                 return f"{sign}{whole}.{frac}{suffix}"
 
-        if oom >= 3:
-
-
         if oom < 3:
 
             return f"{sign}{v}{suffix}"

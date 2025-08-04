@@ -1,12 +1,13 @@
 #! /usr/bin/env python3
 
 # ######################################################################## #
-# File:     tests/test_time.py
+# File:     tests/test_time_types.py
 #
-# Purpose:  Unit-test for `asynkio.time.Duration`.
+# Purpose:  Unit-test for `asynkio.time.Duration` and
+#           `asynkio.time.Interval`.
 #
 # Created:  25th July 2025
-# Updated:  3rd August 2025
+# Updated:  4th August 2025
 #
 # Copyright (c) Matthew Wilson, Synesis Information Systems Pty Ltd
 # All rights reserved
