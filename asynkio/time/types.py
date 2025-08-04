@@ -8,6 +8,10 @@ class Duration:
     Represents a span of time.
     """
 
+    __slots__ = (
+        "_duration",
+    )
+
     def __init__(
         self,
         from_ns,
@@ -333,6 +337,10 @@ class Instant:
     """
     Represents a moment in time.
     """
+
+    __slots__ = (
+        "_t",
+    )
 
     def __init__(self, t_ns):
         """
