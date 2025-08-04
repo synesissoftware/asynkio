@@ -258,7 +258,6 @@ class Duration:
             whole = v // divisor_1
             frac = v - (whole * divisor_1)
 
-
             return fmt(sign, whole, frac, suffix)
 
     def __eq__(self, rhs : Self | float | int) -> bool:
