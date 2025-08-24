@@ -7,7 +7,7 @@
 #           `asynkio.time.Interval`.
 #
 # Created:  25th July 2025
-# Updated:  4th August 2025
+# Updated:  24th August 2025
 #
 # Copyright (c) Matthew Wilson, Synesis Information Systems Pty Ltd
 # All rights reserved

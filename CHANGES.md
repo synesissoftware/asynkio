@@ -1,5 +1,16 @@
 # **asynkio** Changes
 
+## 0.0.2 - 24th August 2025
+
+* added `Interval`;
+* added `MissedTickBehaviour`;
+
+
+## 0.0.1 - 24th August 2025
+
+* significant enhancements to time types `Duration` and `Instant`;
+
+
 ## 0.0.0.1 - 24th August 2025
 
 * tidying;
