@@ -28,13 +28,11 @@ Issues = "https://github.com/synesissoftware/asynkio/issues"
 [project.optional-dependencies]
 dev = [
 	"aiofiles",
-	"pyclasp",
 	"pyclasp>=0.8.10",
 	"pytest>=7.4.4",
 ]
 test = [
 	"aiofiles",
-	"pyclasp",
 	"pyclasp>=0.8.10",
 	"pytest>=7.4.4",
 ]

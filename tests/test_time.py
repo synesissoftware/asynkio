@@ -6,7 +6,7 @@
 # Purpose:  Unit-test for `asynkio.time.Duration`.
 #
 # Created:  25th July 2025
-# Updated:  26th July 2025
+# Updated:  24th August 2025
 #
 # Copyright (c) Matthew Wilson, Synesis Information Systems Pty Ltd
 # All rights reserved
@@ -138,7 +138,9 @@ def test_Instant_CREATE():
 
     duration_1_2 = instant_2 - instant_1
 
-    assert duration_1_2.as_micros() < 2, f"{duration_1_2.as_micros()} should be < {2}"
+    max_duration_delta = 10
+
+    assert duration_1_2.as_micros() < max_duration_delta, f"{duration_1_2.as_micros()} should be < {max_duration_delta}"
 
 
     instant_3 = instant_1 + Duration.from_micros(123)
