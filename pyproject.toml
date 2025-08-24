@@ -13,12 +13,12 @@ dependencies = [
 	"asyncio",
 	"diagnosticism",
 ]
-description = "Path parsing library"
+description = "Tokio-like functionality for Python"
 license = { text = "BSD-3" }
 name = "asynkio"
 readme = "README.md"
 requires-python = ">=3.11"
-version = "0.0.0"
+version = "0.0.0.1"
 
 [project.urls]
 Changelog = "https://github.com/synesissoftware/asynkio/releases"
