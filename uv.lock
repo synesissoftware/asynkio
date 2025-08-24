@@ -1,5 +1,5 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.11"
 
 [[package]]
@@ -47,9 +47,7 @@ requires-dist = [
     { name = "aiofiles", marker = "extra == 'test'" },
     { name = "asyncio" },
     { name = "diagnosticism" },
-    { name = "pyclasp", marker = "extra == 'dev'" },
     { name = "pyclasp", marker = "extra == 'dev'", specifier = ">=0.8.10" },
-    { name = "pyclasp", marker = "extra == 'test'" },
     { name = "pyclasp", marker = "extra == 'test'", specifier = ">=0.8.10" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.4.4" },
     { name = "pytest", marker = "extra == 'test'", specifier = ">=7.4.4" },
