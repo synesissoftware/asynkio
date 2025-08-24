@@ -1,5 +1,5 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.11"
 
 [[package]]
@@ -22,7 +22,7 @@ wheels = [
 
 [[package]]
 name = "asynkio"
-version = "0.0.0"
+version = "0.0.0.1"
 source = { editable = "." }
 dependencies = [
     { name = "asyncio" },
@@ -48,9 +48,7 @@ requires-dist = [
     { name = "aiofiles", marker = "extra == 'test'" },
     { name = "asyncio" },
     { name = "diagnosticism" },
-    { name = "pyclasp", marker = "extra == 'dev'" },
     { name = "pyclasp", marker = "extra == 'dev'", specifier = ">=0.8.10" },
-    { name = "pyclasp", marker = "extra == 'test'" },
     { name = "pyclasp", marker = "extra == 'test'", specifier = ">=0.8.10" },
     { name = "pytest", specifier = ">=8.4.1" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.4.4" },
