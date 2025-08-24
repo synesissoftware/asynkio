@@ -274,7 +274,9 @@ def test_Instant_CREATE():
 
     duration_1_2 = instant_2 - instant_1
 
-    assert duration_1_2.as_micros() < 5, f"{duration_1_2.as_micros()} should be < {5}"
+    max_duration_delta = 5
+
+    assert duration_1_2.as_micros() < max_duration_delta, f"{duration_1_2.as_micros()} should be < {max_duration_delta}"
 
 
     instant_3 = instant_1 + Duration.from_micros(123)
