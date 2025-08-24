@@ -22,11 +22,12 @@ wheels = [
 
 [[package]]
 name = "asynkio"
-version = "0.0.0.1"
+version = "0.0.1"
 source = { editable = "." }
 dependencies = [
     { name = "asyncio" },
     { name = "diagnosticism" },
+    { name = "pytest" },
 ]
 
 [package.optional-dependencies]
@@ -49,6 +50,7 @@ requires-dist = [
     { name = "diagnosticism" },
     { name = "pyclasp", marker = "extra == 'dev'", specifier = ">=0.8.10" },
     { name = "pyclasp", marker = "extra == 'test'", specifier = ">=0.8.10" },
+    { name = "pytest", specifier = ">=8.4.1" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.4.4" },
     { name = "pytest", marker = "extra == 'test'", specifier = ">=7.4.4" },
 ]
