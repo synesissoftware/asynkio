@@ -14,7 +14,7 @@ dependencies = [
 	"diagnosticism",
 ]
 description = "Tokio-like functionality for Python"
-license = { text = "BSD-3" }
+license-files = ["LICENSE"]
 name = "asynkio"
 readme = "README.md"
 requires-python = ">=3.11"
