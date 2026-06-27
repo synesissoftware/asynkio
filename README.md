@@ -21,6 +21,9 @@ Tokio-like functionality for Python
 	- [Where to get help](#where-to-get-help)
 	- [Contribution guidelines](#contribution-guidelines)
 	- [Dependencies](#dependencies)
+		- [Efferent (fan-out)](#efferent-fan-out)
+			- [Development Dependencies](#development-dependencies)
+		- [Afferent (fan-in)](#afferent-fan-in)
 	- [Related projects](#related-projects)
 	- [License](#license)
 
@@ -76,7 +79,11 @@ from asynkio.time import (
 
 ## Examples
 
-Examples are provided in the ```examples``` directory, along with a markdown description for each. A detailed list TOC of them is provided in [EXAMPLES.md](./EXAMPLES.md).
+Worked examples are not yet provided in an `examples/` directory. Until
+that is in place, manual scripts under `tests/` demonstrate `Interval`
+behaviour (for example, `uv run python tests/test_interval_skip.py`).
+
+See [EXAMPLES.md](./EXAMPLES.md) for a summary of those scripts.
 
 
 ## Project Information
@@ -94,12 +101,41 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 
 ### Dependencies
 
-T.B.C.
+**asynkio** has no runtime dependencies beyond the **Python** standard
+library (`asyncio`).
+
+
+#### Efferent (fan-out)
+
+Libraries upon which **asynkio** depends:
+
+None.
+
+
+##### Development Dependencies
+
+* [**aiofiles**](https://pypi.org/project/aiofiles/) — development and
+  demonstration tooling;
+* [**diagnosticism**](https://pypi.org/project/diagnosticism/) — manual
+  `Interval` demonstration scripts;
+* [**pyclasp**](https://pypi.org/project/pyclasp/) — development and
+  demonstration tooling;
+* [**pytest**](https://pypi.org/project/pytest/) — unit-test runner;
+
+
+#### Afferent (fan-in)
+
+Projects that depend on **asynkio**:
+
+None (currently).
 
 
 ### Related projects
 
-T.B.C.
+* [**Tokio**](https://github.com/tokio-rs/tokio) (**Rust**) — the library
+  whose time types **asynkio** emulates;
+* [**Diagnosticism.Python**](https://github.com/synesissoftware/Diagnosticism.Python/)
+  — used in manual interval demonstration scripts;
 
 
 ### License

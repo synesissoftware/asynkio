@@ -16,6 +16,7 @@
 * added `Interval` unit tests with mocked `asyncio`;
 * fixed `Interval.negative_bias()` return value;
 * extended GitHub Actions workflow for feature branches, and Python 3.14;
+* completed README **Dependencies**, **Examples**, and **Related projects** sections;
 
 
 ## 0.0.2 - 24th August 2025
