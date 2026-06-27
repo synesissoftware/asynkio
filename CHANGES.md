@@ -13,6 +13,7 @@
 * added **MANIFEST.in**;
 * aligned README badges with Diagnosticism.Python 0.16 style;
 * added **pyproject.toml** classifiers for Python 3.11+;
+* fixed misspelt unit test names;
 
 
 ## 0.0.2 - 24th August 2025
