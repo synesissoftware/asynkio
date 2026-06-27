@@ -18,6 +18,7 @@
 * extended GitHub Actions workflow for feature branches, and Python 3.14;
 * completed README **Dependencies**, **Examples**, and **Related projects** sections;
 * moved interval demonstration scripts from **tests/** to **examples/**;
+* updated GitHub Actions to install the project from **pyproject.toml**;
 
 
 ## 0.0.2 - 24th August 2025
