@@ -5,8 +5,7 @@
 
 * corrected project dependencies:
   * removed spurious runtime dependencies (`asyncio`, `diagnosticism`, `pytest`);
-  * moved test/development dependencies to
-    `[project.optional-dependencies]` (`dev`, `test`);
+  * moved test/development dependencies to `[project.optional-dependencies]` (`dev`, `test`);
   * added `[dependency-groups] dev` so `uv sync` installs tooling for local development and testing;
 * defined public API via `__all__` and package exports;
 * removed **tests** from installable package via `[tool.setuptools.packages.find]`;
@@ -16,6 +15,7 @@
 * fixed misspelt unit test names;
 * added `Interval` unit tests with mocked `asyncio`;
 * fixed `Interval.negative_bias()` return value;
+* extended GitHub Actions workflow for feature branches, and Python 3.14;
 
 
 ## 0.0.2 - 24th August 2025

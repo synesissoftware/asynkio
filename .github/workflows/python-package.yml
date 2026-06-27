@@ -5,9 +5,19 @@ name: Python package
 
 on:
   push:
-    branches: [ "master", "dev" ]
+    branches:
+      - master
+      - dev
+      - tidying
+      - 'bugfix/**'
+      - 'chore/**'
+      - 'feature/**'
+      - 'fix/**'
+      - 'refactor/**'
   pull_request:
-    branches: [ "master", "dev" ]
+    branches:
+      - master
+      - dev
 
 jobs:
   build:
@@ -16,7 +26,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.11", "3.12", "3.13"]
+        python-version:
+          - "3.11"
+          - "3.12"
+          - "3.13"
+          - "3.14"
 
     steps:
     - uses: actions/checkout@v4
