@@ -1,8 +1,9 @@
 # asynkio - NOTES <!-- omit in toc -->
 
+
 ## Testing
 
-`$ uv add pytest`
+`$ uv sync`
 
 `$ uv run pytest`
 

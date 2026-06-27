@@ -1,5 +1,17 @@
 # **asynkio** Changes
 
+
+## 0.0.3 - 27th June 2026
+
+* corrected project dependencies:
+  * removed spurious runtime dependencies (`asyncio`, `diagnosticism`,
+    `pytest`);
+  * moved test/development dependencies to
+    `[project.optional-dependencies]` (`dev`, `test`);
+  * added `[dependency-groups] dev` so `uv sync` installs tooling for
+    local development and testing;
+
+
 ## 0.0.2 - 24th August 2025
 
 * added `Interval`;
