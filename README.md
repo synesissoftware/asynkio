@@ -41,12 +41,38 @@ $ pip3 install asynkio
 
 Use via **import**:
 
-T.B.C.
+```python
+from asynkio import (
+    Duration,
+    Instant,
+    Interval,
+    MissedTickBehaviour,
+)
+```
+
+or:
+
+```python
+from asynkio.time import (
+    Duration,
+    Instant,
+    Interval,
+    MissedTickBehaviour,
+)
+```
+
+`MissedTickBehavior` (US spelling) is also exported as an alias for
+`MissedTickBehaviour`.
 
 
 ## Components
 
-T.B.C.
+| Symbol | Description |
+| --- | --- |
+| `Duration` | Elapsed time, in nanoseconds (Tokio-like) |
+| `Instant` | Point in time, as nanoseconds since the epoch |
+| `Interval` | Async periodic timer with missed-tick policy |
+| `MissedTickBehaviour` | Missed-tick policy (`BURST`, `DELAY`, `SKIP`) |
 
 
 ## Examples
