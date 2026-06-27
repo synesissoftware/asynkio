@@ -1,10 +1,12 @@
 #! /usr/bin/env python3
 
 # ######################################################################## #
-# File:     tests/test_interval.py
+# File:     examples/interval.py
+#
+# Purpose:  General `Interval` demonstration (versus `asyncio.sleep`).
 #
 # Created:  25th July 2025
-# Updated:  4th August 2025
+# Updated:  27th June 2026
 #
 # Author:   Matthew Wilson
 #
@@ -45,8 +47,6 @@ def _clipped_delta_as_ns(
 
     delta = int(t) - int(f)
     q, r = divmod(delta, quantum_ns)
-
-    # d.dbgfl(f, t, delta, q, r)
 
     return Duration.from_nanos(r)
 
@@ -93,8 +93,6 @@ async def run_asynkio_interval(
     t1 = t0
 
     count = 0
-
-    delta = 1
 
     while True:
 
@@ -153,16 +151,6 @@ async def main(
         heartbeat(missed_tick_behaviour),
         run_asyncio_sleep(   "asyncio.sleep      ", 5_000, synchronous_sleep_ms=0),
         run_asynkio_interval("asynkio.interval a1", 2_500, synchronous_sleep_ms=0),
-
-        # run_asyncio_sleep(   "asyncio.sleep      ", 5_000, synchronous_sleep_ms=0),
-        # run_asynkio_interval("asynkio.interval a1", 2_500, synchronous_sleep_ms=0),
-        # run_asynkio_interval("asynkio.interval a2", 5_000, synchronous_sleep_ms=0),
-        # run_asynkio_interval("asynkio.interval a3", 5_000, synchronous_sleep_ms=0),
-        # run_asynkio_interval("asynkio.interval a4", 5_000, synchronous_sleep_ms=0),
-        # run_asynkio_interval("asynkio.interval a5", 5_000, synchronous_sleep_ms=0),
-        # run_asyncio_sleep(   "asyncio.sleep    S", 5_000, synchronous_sleep_ms=1_000),
-        # run_asynkio_interval("asynkio.interval S1", 2_500, synchronous_sleep_ms=2_000),
-        # run_asynkio_interval("asynkio.interval S2", 5_000, synchronous_sleep_ms=5_500),
     )
 
 def show_help(

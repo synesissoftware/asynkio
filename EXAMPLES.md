@@ -2,20 +2,20 @@
 
 | Name | Source & Description | Summary |
 | --- | --- | --- |
-| interval | [tests/test_interval.py](./tests/test_interval.py) | General `Interval` demonstration |
-| interval-burst | [tests/test_interval_burst.py](./tests/test_interval_burst.py) | `BURST` missed-tick behaviour |
-| interval-delay | [tests/test_interval_delay.py](./tests/test_interval_delay.py) | `DELAY` missed-tick behaviour |
-| interval-skip | [tests/test_interval_skip.py](./tests/test_interval_skip.py) | `SKIP` missed-tick behaviour |
+| interval | [examples/interval.py](./examples/interval.py) | General `Interval` demonstration |
+| interval-burst | [examples/interval_burst.py](./examples/interval_burst.py) | `BURST` missed-tick behaviour |
+| interval-delay | [examples/interval_delay.py](./examples/interval_delay.py) | `DELAY` missed-tick behaviour |
+| interval-skip | [examples/interval_skip.py](./examples/interval_skip.py) | `SKIP` missed-tick behaviour |
 
 Run a script with, for example:
 
 ```
 $ uv sync
-$ uv run python tests/test_interval_skip.py
+$ uv run python examples/interval_skip.py
 ```
 
-Manual scripts require the development dependencies (`diagnosticism`, and
-so on). An `examples/` directory may be added in a future release.
+Examples require the development dependencies (`diagnosticism`, and so
+on). Install them with `uv sync` or `pip install asynkio[dev]`.
 
 
 <!-- ########################### end of file ########################### -->

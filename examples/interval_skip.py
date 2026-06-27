@@ -1,10 +1,12 @@
 #! /usr/bin/env python3
 
 # ######################################################################## #
-# File:     tests/test_interval_burst.py
+# File:     examples/interval_skip.py
+#
+# Purpose:  `Interval` demonstration with `SKIP` missed-tick behaviour.
 #
 # Created:  3rd August 2025
-# Updated:  4th August 2025
+# Updated:  27th June 2026
 #
 # Author:   Matthew Wilson
 #
@@ -27,16 +29,16 @@ import diagnosticism.severity as sev
 import time
 
 
-async def run_with_bursts(
-    burst_increment,
-    burst_duration,
+async def run_with_skips(
+    skip_increment,
+    skip_duration,
 ):
 
     d.trace()
 
     interval = Interval(
         Duration.from_secs(1),
-        missed_tick_behaviour=MissedTickBehaviour.BURST,
+        missed_tick_behaviour=MissedTickBehaviour.SKIP,
     )
 
     t0 = Instant.now()
@@ -47,11 +49,11 @@ async def run_with_bursts(
 
     while True:
 
-        if 0 != count and 0 == (count % burst_increment):
+        if 0 != count and 0 == (count % skip_increment):
 
-            d.log(sev.INFO, f"⌛  hard sleeping for {burst_duration} ...")
+            d.log(sev.INFO, f"⌛  hard sleeping for {skip_duration} ...")
 
-            time.sleep(int(burst_duration) / 1_000_000_000.0)
+            time.sleep(int(skip_duration) / 1_000_000_000.0)
 
         await interval
 
@@ -64,25 +66,24 @@ async def run_with_bursts(
         delta_1 = t2 - t1
         delta_N = t2 - t0
         delta_M = p * count
+        delta_I = Duration.from_nanos(delta_N.as_nanos() % p.as_nanos())
 
-        d.log(sev.INFO, f"⚙️  #{count} : ∆={delta_N}, ∂={delta_1}, {(delta_N - delta_M).as_nanos():,} ({delta_N - delta_M})") # x̄∆={Duration.from_nanos((t2 - t0).as_nanos() % 1_000_000_000)}")
-        # d.log(sev.INFO, f"⚙️  #{count} : {t2 - t0}, {t2 - t1} ({(t2 - t1).as_nanos()}), {Duration.from_nanos((t2 - t0).as_nanos() % 1_000_000_000)}")
+        d.log(sev.INFO, f"⚙️  #{count} : ∆={delta_N}, ∂={delta_1}, {(delta_N - delta_M).as_nanos():,} ({delta_N - delta_M}); ∂={delta_I}")
 
         t1 = t2
-
 
 
 async def main():
 
     d.trace()
 
-    burst_increment = 12
-    burst_duration = Duration.from_millis(4_700)
+    skip_increment = 12
+    skip_duration = Duration.from_millis(4_700)
 
     t = asyncio.create_task(
-        run_with_bursts(
-            burst_increment,
-            burst_duration,
+        run_with_skips(
+            skip_increment,
+            skip_duration,
         )
     )
 

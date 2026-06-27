@@ -79,11 +79,15 @@ from asynkio.time import (
 
 ## Examples
 
-Worked examples are not yet provided in an `examples/` directory. Until
-that is in place, manual scripts under `tests/` demonstrate `Interval`
-behaviour (for example, `uv run python tests/test_interval_skip.py`).
+Examples are provided in the `examples/` directory. See
+[EXAMPLES.md](./EXAMPLES.md) for a summary of each script.
 
-See [EXAMPLES.md](./EXAMPLES.md) for a summary of those scripts.
+Run a script with, for example:
+
+```
+$ uv sync
+$ uv run python examples/interval_skip.py
+```
 
 
 ## Project Information
@@ -116,8 +120,8 @@ None.
 
 * [**aiofiles**](https://pypi.org/project/aiofiles/) — development and
   demonstration tooling;
-* [**diagnosticism**](https://pypi.org/project/diagnosticism/) — manual
-  `Interval` demonstration scripts;
+* [**diagnosticism**](https://pypi.org/project/diagnosticism/) — example
+  scripts under `examples/`;
 * [**pyclasp**](https://pypi.org/project/pyclasp/) — development and
   demonstration tooling;
 * [**pytest**](https://pypi.org/project/pytest/) — unit-test runner;
@@ -135,7 +139,7 @@ None (currently).
 * [**Tokio**](https://github.com/tokio-rs/tokio) (**Rust**) — the library
   whose time types **asynkio** emulates;
 * [**Diagnosticism.Python**](https://github.com/synesissoftware/Diagnosticism.Python/)
-  — used in manual interval demonstration scripts;
+  — used in `examples/` scripts;
 
 
 ### License

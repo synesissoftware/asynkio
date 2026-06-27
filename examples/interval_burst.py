@@ -1,10 +1,12 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 # ######################################################################## #
-# File:     tests/test_interval_skip.py
+# File:     examples/interval_burst.py
+#
+# Purpose:  `Interval` demonstration with `BURST` missed-tick behaviour.
 #
 # Created:  3rd August 2025
-# Updated:  4th August 2025
+# Updated:  27th June 2026
 #
 # Author:   Matthew Wilson
 #
@@ -27,16 +29,16 @@ import diagnosticism.severity as sev
 import time
 
 
-async def run_with_skips(
-    skip_increment,
-    skip_duration,
+async def run_with_bursts(
+    burst_increment,
+    burst_duration,
 ):
 
     d.trace()
 
     interval = Interval(
         Duration.from_secs(1),
-        missed_tick_behaviour=MissedTickBehaviour.SKIP,
+        missed_tick_behaviour=MissedTickBehaviour.BURST,
     )
 
     t0 = Instant.now()
@@ -47,11 +49,11 @@ async def run_with_skips(
 
     while True:
 
-        if 0 != count and 0 == (count % skip_increment):
+        if 0 != count and 0 == (count % burst_increment):
 
-            d.log(sev.INFO, f"⌛  hard sleeping for {skip_duration} ...")
+            d.log(sev.INFO, f"⌛  hard sleeping for {burst_duration} ...")
 
-            time.sleep(int(skip_duration) / 1_000_000_000.0)
+            time.sleep(int(burst_duration) / 1_000_000_000.0)
 
         await interval
 
@@ -64,9 +66,8 @@ async def run_with_skips(
         delta_1 = t2 - t1
         delta_N = t2 - t0
         delta_M = p * count
-        delta_I = Duration.from_nanos(delta_N.as_nanos() % p.as_nanos())
 
-        d.log(sev.INFO, f"⚙️  #{count} : ∆={delta_N}, ∂={delta_1}, {(delta_N - delta_M).as_nanos():,} ({delta_N - delta_M}); ∂={delta_I}")
+        d.log(sev.INFO, f"⚙️  #{count} : ∆={delta_N}, ∂={delta_1}, {(delta_N - delta_M).as_nanos():,} ({delta_N - delta_M})")
 
         t1 = t2
 
@@ -75,13 +76,13 @@ async def main():
 
     d.trace()
 
-    skip_increment = 12
-    skip_duration = Duration.from_millis(4_700)
+    burst_increment = 12
+    burst_duration = Duration.from_millis(4_700)
 
     t = asyncio.create_task(
-        run_with_skips(
-            skip_increment,
-            skip_duration,
+        run_with_bursts(
+            burst_increment,
+            burst_duration,
         )
     )
 
