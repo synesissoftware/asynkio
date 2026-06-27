@@ -13,8 +13,11 @@ wheels = [
 
 [[package]]
 name = "asynkio"
-version = "0.0.3"
+version = "0.1.0"
 source = { editable = "." }
+dependencies = [
+    { name = "diagnosticism" },
+]
 
 [package.optional-dependencies]
 dev = [
@@ -42,8 +45,9 @@ dev = [
 requires-dist = [
     { name = "aiofiles", marker = "extra == 'dev'" },
     { name = "aiofiles", marker = "extra == 'test'" },
-    { name = "diagnosticism", marker = "extra == 'dev'" },
-    { name = "diagnosticism", marker = "extra == 'test'" },
+    { name = "diagnosticism", specifier = ">=0.16.0" },
+    { name = "diagnosticism", marker = "extra == 'dev'", specifier = ">=0.16.0" },
+    { name = "diagnosticism", marker = "extra == 'test'", specifier = ">=0.16.0" },
     { name = "pyclasp", marker = "extra == 'dev'", specifier = ">=0.8.10" },
     { name = "pyclasp", marker = "extra == 'test'", specifier = ">=0.8.10" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.4.1" },
@@ -54,7 +58,7 @@ provides-extras = ["dev", "test"]
 [package.metadata.requires-dev]
 dev = [
     { name = "aiofiles" },
-    { name = "diagnosticism" },
+    { name = "diagnosticism", specifier = ">=0.16.0" },
     { name = "pyclasp", specifier = ">=0.8.10" },
     { name = "pytest", specifier = ">=8.4.1" },
 ]
@@ -70,9 +74,12 @@ wheels = [
 
 [[package]]
 name = "diagnosticism"
-version = "0.13.0"
+version = "0.16.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/a6/1d/2920ff9128cd77cadfc20cd2086e6094bcb551b27a9d8f6754f643a82eb4/diagnosticism-0.13.0.tar.gz", hash = "sha256:c282b0707eb15013a94a1cdd1a2ec976e8f6df00e846402976f1186bfd5d3081", size = 19842, upload-time = "2025-07-25T07:17:37.789Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/db/bf/506711112e1eff953ee35198d5bc9c78f40de31deedb46285302431958be/diagnosticism-0.16.0.tar.gz", hash = "sha256:39db38bf2e25ef1a521d0fb7d26ac4480a052f74a3ca0fbd425b036717889287", size = 35077, upload-time = "2026-06-27T00:53:05.423Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/80/d7/c6489187166ac44701c0cfa7fa33a8821db2fbd17c25ffcce216109c7fe0/diagnosticism-0.16.0-py3-none-any.whl", hash = "sha256:03985db6e8429fa1c0cca2f54cea7a688f9a973af51b0949fe4646673c2594d4", size = 25104, upload-time = "2026-06-27T00:53:04.227Z" },
+]
 
 [[package]]
 name = "iniconfig"

@@ -105,23 +105,23 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 
 ### Dependencies
 
-**asynkio** has no runtime dependencies beyond the **Python** standard
-library (`asyncio`).
+**asynkio** depends on [**Diagnosticism.Python**](https://github.com/synesissoftware/Diagnosticism.Python/)
+for duration string formatting, and on the **Python** standard library
+(`asyncio`) for async timers.
 
 
 #### Efferent (fan-out)
 
 Libraries upon which **asynkio** depends:
 
-None.
+* [**diagnosticism**](https://pypi.org/project/diagnosticism/) (>= 0.16.0) —
+  `Duration` string formatting via `nanoseconds_to_string()`;
 
 
 ##### Development Dependencies
 
 * [**aiofiles**](https://pypi.org/project/aiofiles/) — development and
   demonstration tooling;
-* [**diagnosticism**](https://pypi.org/project/diagnosticism/) — example
-  scripts under `examples/`;
 * [**pyclasp**](https://pypi.org/project/pyclasp/) — development and
   demonstration tooling;
 * [**pytest**](https://pypi.org/project/pytest/) — unit-test runner;
@@ -139,7 +139,8 @@ None (currently).
 * [**Tokio**](https://github.com/tokio-rs/tokio) (**Rust**) — the library
   whose time types **asynkio** emulates;
 * [**Diagnosticism.Python**](https://github.com/synesissoftware/Diagnosticism.Python/)
-  — used in `examples/` scripts;
+  — runtime dependency for `Duration` formatting; also used in `examples/`
+  scripts;
 
 
 ### License

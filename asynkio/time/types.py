@@ -6,6 +6,8 @@ from datetime import (
 import time
 from typing import Self
 
+from diagnosticism import nanoseconds_to_string
+
 
 class Duration:
     """
@@ -117,158 +119,21 @@ class Duration:
         return (self._duration % 1_000_000_000) // 1_000_000
 
     @staticmethod
-    def _scale_index(n : int) -> tuple[int, int]:
-
-        _SCALES = [
-            1,
-            10,
-            100,
-            1_000,
-            10_000,
-            100_000,
-            1_000_000,
-            10_000_000,
-            100_000_000,
-            1_000_000_000,
-            10_000_000_000,
-            100_000_000_000,
-        ]
-
-        assert n > 0
-        assert len(_SCALES) == 12
-
-        if n >= 100_000_000_000:
-
-            return (11, _SCALES[11])
-
-        l = 0
-        h = 11
-
-        count = 0
-
-        while l <= h:
-
-            count += 1
-
-            assert count < 5, f"too many loops while trying to scale {n}"
-
-            m = (h + l) // 2
-
-            b = _SCALES[m]
-
-            if n == b:
-
-                return (m, b)
-
-            if n < b:
-
-                h = m
-
-                continue
-            else:
-                assert n > b
-
-                if n < b * 10:
-
-                    return (m, b)
-                else:
-
-                    l = m
-
-        return (11, _SCALES[11])
-
-    @staticmethod
     def duration_to_string(
         duration : Self | int,
         format_spec : str = '',
     ) -> str:
+        """
+        Formats a duration as a compact human-readable string.
 
-        v = int(duration)
+        Delegates to
+        `diagnosticism.nanoseconds_to_string()`.
+        """
 
-        if v < 0:
-
-            v = -v
-            sign = '-'
-        else:
-
-            if '+' in format_spec:
-
-                sign = '+'
-            else:
-
-                sign = ''
-
-        if v == 0:
-
-            return "0s"
-
-        oom, divisor = Duration._scale_index(v)
-
-        suffixes = [
-            'ns',
-            'µs',
-            'ms',
-            's',
-        ]
-        suffix = suffixes[oom // 3]
-
-        def fmt(
-            sign,
-            whole,
-            frac,
-            suffix,
-        ):
-
-            if frac == 0:
-
-                return f"{sign}{whole}{suffix}"
-            else:
-
-                if whole > 999:
-
-                    return f"{sign}{whole}{suffix}"
-
-                if whole > 99:
-
-                    return f"{sign}{whole}.{frac}{suffix}"
-
-                if whole > 9:
-
-                    return f"{sign}{whole}.{frac:02d}{suffix}"
-
-                return f"{sign}{whole}.{frac}{suffix}"
-
-        if oom < 3:
-
-            return f"{sign}{v}{suffix}"
-        else:
-
-            divisor_0 = divisor // 1_000
-
-            i = oom % 3
-
-            if i == 0:
-
-                divisor_1 = 1_000
-            elif i == 1:
-
-                divisor_1 = 100
-            else:
-
-                divisor_1 = 10
-
-
-            v //= divisor_0
-
-            whole = v // divisor_1
-            frac = v - (whole * divisor_1)
-
-            return fmt(
-                sign,
-                whole,
-                frac,
-                suffix,
-            )
+        return nanoseconds_to_string(
+            int(duration),
+            format_spec,
+        )
 
     def __eq__(self, rhs : Self | float | int) -> bool:
 
