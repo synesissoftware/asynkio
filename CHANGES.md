@@ -11,7 +11,7 @@
 * removed **tests** from installable package via `[tool.setuptools.packages.find]`;
 * added **MANIFEST.in**;
 * aligned README badges with Diagnosticism.Python 0.16 style;
-* added **pyproject.toml** classifiers for Python 3.11+;
+* added **pyproject.toml** classifiers for Python 3.11+ (including 3.14);
 * fixed misspelt unit test names;
 * added `Interval` unit tests with mocked `asyncio`;
 * fixed `Interval.negative_bias()` return value;
