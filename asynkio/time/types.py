@@ -414,8 +414,6 @@ class Instant:
 
         for c in format_spec:
 
-            print(f"c={c}")
-
             if c == 'd':
 
                 typed = set_type_or_raise(typed, int, c, '')
