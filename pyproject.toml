@@ -9,17 +9,25 @@ requires = [
 authors = [
 	{ name = "Matt Wilson", email = "matthew@synesis.com.au" },
 ]
-dependencies = [
-	"asyncio",
-	"diagnosticism",
-	"pytest>=8.4.1",
+classifiers = [
+	"Intended Audience :: Developers",
+	"License :: OSI Approved :: BSD License",
+	"Natural Language :: English",
+	"Operating System :: OS Independent",
+	"Programming Language :: Python",
+	"Programming Language :: Python :: 3",
+	"Programming Language :: Python :: 3.11",
+	"Programming Language :: Python :: 3.12",
+	"Programming Language :: Python :: 3.13",
+	"Programming Language :: Python :: 3.14",
 ]
+dependencies = []
 description = "Tokio-like functionality for Python"
 license-files = ["LICENSE"]
 name = "asynkio"
 readme = "README.md"
 requires-python = ">=3.11"
-version = "0.0.2"
+version = "0.0.3"
 
 [project.urls]
 Changelog = "https://github.com/synesissoftware/asynkio/releases"
@@ -29,12 +37,27 @@ Issues = "https://github.com/synesissoftware/asynkio/issues"
 [project.optional-dependencies]
 dev = [
 	"aiofiles",
+	"diagnosticism",
 	"pyclasp>=0.8.10",
-	"pytest>=7.4.4",
+	"pytest>=8.4.1",
 ]
 test = [
 	"aiofiles",
+	"diagnosticism",
 	"pyclasp>=0.8.10",
-	"pytest>=7.4.4",
+	"pytest>=8.4.1",
 ]
 
+[dependency-groups]
+dev = [
+	"aiofiles",
+	"diagnosticism",
+	"pyclasp>=0.8.10",
+	"pytest>=8.4.1",
+]
+
+[tool.setuptools.packages.find]
+exclude = [
+	"examples",
+	"tests",
+]

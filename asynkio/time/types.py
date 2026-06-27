@@ -13,7 +13,7 @@ class Duration:
     """
 
     __slots__ = (
-        "_duration",
+        '_duration',
     )
 
     def __init__(
@@ -212,7 +212,12 @@ class Duration:
         ]
         suffix = suffixes[oom // 3]
 
-        def fmt(sign, whole, frac, suffix):
+        def fmt(
+            sign,
+            whole,
+            frac,
+            suffix,
+        ):
 
             if frac == 0:
 
@@ -258,7 +263,12 @@ class Duration:
             whole = v // divisor_1
             frac = v - (whole * divisor_1)
 
-            return fmt(sign, whole, frac, suffix)
+            return fmt(
+                sign,
+                whole,
+                frac,
+                suffix,
+            )
 
     def __eq__(self, rhs : Self | float | int) -> bool:
 
@@ -345,7 +355,7 @@ class Instant:
     """
 
     __slots__ = (
-        "_t",
+        '_t',
     )
 
     def __init__(self, t_ns):
@@ -382,7 +392,12 @@ class Instant:
 
         typed = None
 
-        def set_type_or_raise(typed, t, c, b):
+        def set_type_or_raise(
+            typed,
+            t,
+            c,
+            b,
+        ):
 
             # local as_type
 
@@ -398,8 +413,6 @@ class Instant:
         show_base = False
 
         for c in format_spec:
-
-            print(f"c={c}")
 
             if c == 'd':
 

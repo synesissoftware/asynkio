@@ -15,12 +15,12 @@
 # ######################################################################## #
 
 
-import math
 from asynkio.time import (
     Duration,
     Instant,
 )
 
+import math
 
 # ######################################
 # Duration
@@ -116,7 +116,6 @@ def test_Duration_STRINGS():
     assert "89.12s" == str(Duration.from_nanos(89_123_456_789))
     assert "789.1s" == str(Duration.from_nanos(789_123_456_789))
 
-
     assert "9ns" == str(Duration.from_nanos(9))
     assert "80ns" == str(Duration.from_nanos(80))
     assert "700ns" == str(Duration.from_nanos(700))
@@ -170,7 +169,6 @@ def test_Duration_NEGATIVE_VALUES_STRINGS():
     assert "-123.4ms" == str(Duration.from_nanos(-123_456_789))
 
     assert "-9.123s" == str(Duration.from_nanos(-9_123_456_789))
-
 
     assert "-9ns" == str(Duration.from_nanos(-9))
     assert "-80ns" == str(Duration.from_nanos(-80))
@@ -286,7 +284,7 @@ def test_Instant_CREATE():
     assert 123_000 == duration_1_3.as_nanos()
 
 
-def test_Intant_REPR():
+def test_Instant_REPR():
 
     assert "<asynkio.time.types.Instant: _t=0>" == repr(Instant(0))
     assert "<asynkio.time.types.Instant: _t=123>" == repr(Instant(123))
@@ -295,7 +293,7 @@ def test_Intant_REPR():
     assert "<asynkio.time.types.Instant: _t=980123456789>" == repr(Instant(980_123_456_789))
 
 
-def test_Intant_STR():
+def test_Instant_STR():
 
     instant_0 = Instant(0)
 
@@ -306,7 +304,7 @@ def test_Intant_STR():
     assert "2025-08-04T01:31:05.290980Z" == str(instant_x)
 
 
-def test_Intant_FMT():
+def test_Instant_FMT():
 
     instant_0 = Instant(0)
 
@@ -335,7 +333,7 @@ def test_Intant_FMT():
     assert "0X18586C3D466A3AA0" == format(instant_x, '#X')
 
 
-def test_Intant_INT():
+def test_Instant_INT():
 
     assert 0 == Instant(0).__int__()
     assert 123 == Instant(123).__int__()

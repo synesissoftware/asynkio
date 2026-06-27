@@ -36,15 +36,15 @@ class MissedTickBehaviour(enum.IntEnum):
 
         if MissedTickBehaviour.BURST == self:
 
-            return "BURST"
+            return 'BURST'
 
         if MissedTickBehaviour.DELAY == self:
 
-            return "DELAY"
+            return 'DELAY'
 
         if MissedTickBehaviour.SKIP == self:
 
-            return "SKIP"
+            return 'SKIP'
 
         return NotImplemented
 
@@ -229,7 +229,7 @@ class Interval:
         The interval's negative bias.
         """
 
-        return Duration(self._negative_bias)
+        return Duration.from_nanos(self._negative_bias)
 
     def period(self) -> Duration:
         """

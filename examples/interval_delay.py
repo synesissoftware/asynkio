@@ -1,10 +1,12 @@
 #! /usr/bin/env python3
 
 # ######################################################################## #
-# File:     tests/test_interval_delay.py
+# File:     examples/interval_delay.py
+#
+# Purpose:  `Interval` demonstration with `DELAY` missed-tick behaviour.
 #
 # Created:  3rd August 2025
-# Updated:  4th August 2025
+# Updated:  27th June 2026
 #
 # Author:   Matthew Wilson
 #
@@ -65,11 +67,9 @@ async def run_with_delays(
         delta_N = t2 - t0
         delta_M = p * count
 
-        d.log(sev.INFO, f"⚙️  #{count} : ∆={delta_N}, ∂={delta_1}, {(delta_N - delta_M).as_nanos():,} ({delta_N - delta_M})") # x̄∆={Duration.from_nanos((t2 - t0).as_nanos() % 1_000_000_000)}")
-        # d.log(sev.INFO, f"⚙️  #{count} : {t2 - t0}, {t2 - t1} ({(t2 - t1).as_nanos()}), {Duration.from_nanos((t2 - t0).as_nanos() % 1_000_000_000)}")
+        d.log(sev.INFO, f"⚙️  #{count} : ∆={delta_N}, ∂={delta_1}, {(delta_N - delta_M).as_nanos():,} ({delta_N - delta_M})")
 
         t1 = t2
-
 
 
 async def main():
@@ -79,10 +79,12 @@ async def main():
     delay_increment = 12
     delay_duration = Duration.from_millis(4_700)
 
-    t = asyncio.create_task(run_with_delays(
-        delay_increment,
-        delay_duration,
-    ))
+    t = asyncio.create_task(
+        run_with_delays(
+            delay_increment,
+            delay_duration,
+        )
+    )
 
     await asyncio.gather(t)
 

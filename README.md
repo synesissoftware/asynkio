@@ -1,15 +1,14 @@
 # asynkio - README <!-- omit in toc -->
 
-<!--
-[![CircleCI](https://circleci.com/gh/google/asynkio.svg?style=svg)](https://circleci.com/gh/google/asynkio)
--->
-[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
-[![PyPI version](https://badge.fury.io/py/asynkio.svg)](https://badge.fury.io/py/asynkio)
-![versions](https://img.shields.io/pypi/pyversions/asynkio.svg)
-[![Python package](https://github.com/synesissoftware/asynkio/actions/workflows/python-package.yml/badge.svg)](https://github.com/synesissoftware/asynkio/actions/workflows/python-package.yml)
-[![Last Commit](https://img.shields.io/github/last-commit/synesissoftware/asynkio)](https://github.com/synesissoftware/asynkio/commits/master)
-
 Tokio-like functionality for Python
+
+![Language](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+[![PyPI](https://img.shields.io/pypi/v/asynkio.svg)](https://pypi.org/project/asynkio/)
+[![GitHub release](https://img.shields.io/github/v/release/synesissoftware/asynkio.svg)](https://github.com/synesissoftware/asynkio/releases/latest)
+![Python](https://img.shields.io/badge/Python-3.11+-lightgrey)
+[![CI](https://github.com/synesissoftware/asynkio/actions/workflows/python-package.yml/badge.svg)](https://github.com/synesissoftware/asynkio/actions/workflows/python-package.yml)
+[![PyPI project](https://img.shields.io/badge/documentation-PyPI-lightgrey)](https://pypi.org/project/asynkio/)
 
 
 ## Table of contents <!-- omit in toc -->
@@ -22,6 +21,9 @@ Tokio-like functionality for Python
 	- [Where to get help](#where-to-get-help)
 	- [Contribution guidelines](#contribution-guidelines)
 	- [Dependencies](#dependencies)
+		- [Efferent (fan-out)](#efferent-fan-out)
+			- [Development Dependencies](#development-dependencies)
+		- [Afferent (fan-in)](#afferent-fan-in)
 	- [Related projects](#related-projects)
 	- [License](#license)
 
@@ -41,17 +43,51 @@ $ pip3 install asynkio
 
 Use via **import**:
 
-T.B.C.
+```python
+from asynkio import (
+    Duration,
+    Instant,
+    Interval,
+    MissedTickBehaviour,
+)
+```
+
+or:
+
+```python
+from asynkio.time import (
+    Duration,
+    Instant,
+    Interval,
+    MissedTickBehaviour,
+)
+```
+
+`MissedTickBehavior` (US spelling) is also exported as an alias for
+`MissedTickBehaviour`.
 
 
 ## Components
 
-T.B.C.
+| Symbol | Description |
+| --- | --- |
+| `Duration` | Elapsed time, in nanoseconds (Tokio-like) |
+| `Instant` | Point in time, as nanoseconds since the epoch |
+| `Interval` | Async periodic timer with missed-tick policy |
+| `MissedTickBehaviour` | Missed-tick policy (`BURST`, `DELAY`, `SKIP`) |
 
 
 ## Examples
 
-Examples are provided in the ```examples``` directory, along with a markdown description for each. A detailed list TOC of them is provided in [EXAMPLES.md](./EXAMPLES.md).
+Examples are provided in the `examples/` directory. See
+[EXAMPLES.md](./EXAMPLES.md) for a summary of each script.
+
+Run a script with, for example:
+
+```
+$ uv sync
+$ uv run python examples/interval_skip.py
+```
 
 
 ## Project Information
@@ -69,12 +105,41 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 
 ### Dependencies
 
-T.B.C.
+**asynkio** has no runtime dependencies beyond the **Python** standard
+library (`asyncio`).
+
+
+#### Efferent (fan-out)
+
+Libraries upon which **asynkio** depends:
+
+None.
+
+
+##### Development Dependencies
+
+* [**aiofiles**](https://pypi.org/project/aiofiles/) — development and
+  demonstration tooling;
+* [**diagnosticism**](https://pypi.org/project/diagnosticism/) — example
+  scripts under `examples/`;
+* [**pyclasp**](https://pypi.org/project/pyclasp/) — development and
+  demonstration tooling;
+* [**pytest**](https://pypi.org/project/pytest/) — unit-test runner;
+
+
+#### Afferent (fan-in)
+
+Projects that depend on **asynkio**:
+
+None (currently).
 
 
 ### Related projects
 
-T.B.C.
+* [**Tokio**](https://github.com/tokio-rs/tokio) (**Rust**) — the library
+  whose time types **asynkio** emulates;
+* [**Diagnosticism.Python**](https://github.com/synesissoftware/Diagnosticism.Python/)
+  — used in `examples/` scripts;
 
 
 ### License
