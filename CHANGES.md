@@ -19,6 +19,8 @@
 * completed README **Dependencies**, **Examples**, and **Related projects** sections;
 * moved interval demonstration scripts from **tests/** to **examples/**;
 * updated GitHub Actions to install the project from **pyproject.toml**;
+* added **build_dist_uv.sh** (build + `twine check`);
+* aligned **build_dist.sh** with **build_dist_uv.sh** (system Python);
 
 
 ## 0.0.2 - 24th August 2025
