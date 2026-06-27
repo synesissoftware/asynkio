@@ -229,7 +229,7 @@ class Interval:
         The interval's negative bias.
         """
 
-        return Duration(self._negative_bias)
+        return Duration.from_nanos(self._negative_bias)
 
     def period(self) -> Duration:
         """
