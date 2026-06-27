@@ -1,15 +1,14 @@
 # asynkio - README <!-- omit in toc -->
 
-<!--
-[![CircleCI](https://circleci.com/gh/google/asynkio.svg?style=svg)](https://circleci.com/gh/google/asynkio)
--->
-[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
-[![PyPI version](https://badge.fury.io/py/asynkio.svg)](https://badge.fury.io/py/asynkio)
-![versions](https://img.shields.io/pypi/pyversions/asynkio.svg)
-[![Python package](https://github.com/synesissoftware/asynkio/actions/workflows/python-package.yml/badge.svg)](https://github.com/synesissoftware/asynkio/actions/workflows/python-package.yml)
-[![Last Commit](https://img.shields.io/github/last-commit/synesissoftware/asynkio)](https://github.com/synesissoftware/asynkio/commits/master)
-
 Tokio-like functionality for Python
+
+![Language](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+[![PyPI](https://img.shields.io/pypi/v/asynkio.svg)](https://pypi.org/project/asynkio/)
+[![GitHub release](https://img.shields.io/github/v/release/synesissoftware/asynkio.svg)](https://github.com/synesissoftware/asynkio/releases/latest)
+![Python](https://img.shields.io/badge/Python-3.11+-lightgrey)
+[![CI](https://github.com/synesissoftware/asynkio/actions/workflows/python-package.yml/badge.svg)](https://github.com/synesissoftware/asynkio/actions/workflows/python-package.yml)
+[![PyPI project](https://img.shields.io/badge/documentation-PyPI-lightgrey)](https://pypi.org/project/asynkio/)
 
 
 ## Table of contents <!-- omit in toc -->

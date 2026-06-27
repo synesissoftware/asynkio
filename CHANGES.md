@@ -13,6 +13,7 @@
 * defined public API via `__all__` and package exports;
 * removed `tests` from installable package;
 * added `MANIFEST.in`;
+* aligned README badges with Diagnosticism.Python 0.16 style;
 
 
 ## 0.0.2 - 24th August 2025
