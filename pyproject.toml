@@ -43,3 +43,9 @@ dev = [
 	"pyclasp>=0.8.10",
 	"pytest>=8.4.1",
 ]
+
+[tool.setuptools.packages.find]
+exclude = [
+	"examples",
+	"tests",
+]
