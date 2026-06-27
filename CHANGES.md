@@ -11,9 +11,10 @@
   * added `[dependency-groups] dev` so `uv sync` installs tooling for
     local development and testing;
 * defined public API via `__all__` and package exports;
-* removed `tests` from installable package;
-* added `MANIFEST.in`;
+* removed **tests** from installable package;
+* added **MANIFEST.in**;
 * aligned README badges with Diagnosticism.Python 0.16 style;
+* added **pyproject.toml** classifiers for Python 3.11+;
 
 
 ## 0.0.2 - 24th August 2025
