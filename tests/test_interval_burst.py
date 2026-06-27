@@ -79,10 +79,12 @@ async def main():
     burst_increment = 12
     burst_duration = Duration.from_millis(4_700)
 
-    t = asyncio.create_task(run_with_bursts(
-        burst_increment,
-        burst_duration,
-    ))
+    t = asyncio.create_task(
+        run_with_bursts(
+            burst_increment,
+            burst_duration,
+        )
+    )
 
     await asyncio.gather(t)
 

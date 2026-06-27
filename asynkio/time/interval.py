@@ -36,15 +36,15 @@ class MissedTickBehaviour(enum.IntEnum):
 
         if MissedTickBehaviour.BURST == self:
 
-            return "BURST"
+            return 'BURST'
 
         if MissedTickBehaviour.DELAY == self:
 
-            return "DELAY"
+            return 'DELAY'
 
         if MissedTickBehaviour.SKIP == self:
 
-            return "SKIP"
+            return 'SKIP'
 
         return NotImplemented
 

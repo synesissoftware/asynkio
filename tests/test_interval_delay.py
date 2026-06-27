@@ -79,10 +79,12 @@ async def main():
     delay_increment = 12
     delay_duration = Duration.from_millis(4_700)
 
-    t = asyncio.create_task(run_with_delays(
-        delay_increment,
-        delay_duration,
-    ))
+    t = asyncio.create_task(
+        run_with_delays(
+            delay_increment,
+            delay_duration,
+        )
+    )
 
     await asyncio.gather(t)
 

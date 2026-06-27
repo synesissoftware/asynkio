@@ -15,12 +15,12 @@
 # ######################################################################## #
 
 
-import math
 from asynkio.time import (
     Duration,
     Instant,
 )
 
+import math
 
 # ######################################
 # Duration
@@ -116,7 +116,6 @@ def test_Duration_STRINGS():
     assert "89.12s" == str(Duration.from_nanos(89_123_456_789))
     assert "789.1s" == str(Duration.from_nanos(789_123_456_789))
 
-
     assert "9ns" == str(Duration.from_nanos(9))
     assert "80ns" == str(Duration.from_nanos(80))
     assert "700ns" == str(Duration.from_nanos(700))
@@ -170,7 +169,6 @@ def test_Duration_NEGATIVE_VALUES_STRINGS():
     assert "-123.4ms" == str(Duration.from_nanos(-123_456_789))
 
     assert "-9.123s" == str(Duration.from_nanos(-9_123_456_789))
-
 
     assert "-9ns" == str(Duration.from_nanos(-9))
     assert "-80ns" == str(Duration.from_nanos(-80))

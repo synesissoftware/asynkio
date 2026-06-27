@@ -78,10 +78,12 @@ async def main():
     skip_increment = 12
     skip_duration = Duration.from_millis(4_700)
 
-    t = asyncio.create_task(run_with_skips(
-        skip_increment,
-        skip_duration,
-    ))
+    t = asyncio.create_task(
+        run_with_skips(
+            skip_increment,
+            skip_duration,
+        )
+    )
 
     await asyncio.gather(t)
 
