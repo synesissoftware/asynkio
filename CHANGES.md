@@ -4,14 +4,12 @@
 ## 0.0.3 - 27th June 2026
 
 * corrected project dependencies:
-  * removed spurious runtime dependencies (`asyncio`, `diagnosticism`,
-    `pytest`);
+  * removed spurious runtime dependencies (`asyncio`, `diagnosticism`, `pytest`);
   * moved test/development dependencies to
     `[project.optional-dependencies]` (`dev`, `test`);
-  * added `[dependency-groups] dev` so `uv sync` installs tooling for
-    local development and testing;
+  * added `[dependency-groups] dev` so `uv sync` installs tooling for local development and testing;
 * defined public API via `__all__` and package exports;
-* removed **tests** from installable package;
+* removed **tests** from installable package via `[tool.setuptools.packages.find]`;
 * added **MANIFEST.in**;
 * aligned README badges with Diagnosticism.Python 0.16 style;
 * added **pyproject.toml** classifiers for Python 3.11+;
