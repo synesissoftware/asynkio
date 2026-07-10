@@ -18,14 +18,14 @@ Tokio-like functionality for Python
 - [Components](#components)
 - [Examples](#examples)
 - [Project Information](#project-information)
-	- [Where to get help](#where-to-get-help)
-	- [Contribution guidelines](#contribution-guidelines)
-	- [Dependencies](#dependencies)
-		- [Efferent (fan-out)](#efferent-fan-out)
-			- [Development Dependencies](#development-dependencies)
-		- [Afferent (fan-in)](#afferent-fan-in)
-	- [Related projects](#related-projects)
-	- [License](#license)
+  - [Where to get help](#where-to-get-help)
+  - [Contribution guidelines](#contribution-guidelines)
+  - [Dependencies](#dependencies)
+    - [Efferent (fan-out)](#efferent-fan-out)
+      - [Development Dependencies](#development-dependencies)
+    - [Afferent (fan-in)](#afferent-fan-in)
+  - [Related projects](#related-projects)
+  - [License](#license)
 
 
 ## Introduction
