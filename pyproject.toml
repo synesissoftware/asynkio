@@ -22,7 +22,7 @@ classifiers = [
 	"Programming Language :: Python :: 3.14",
 ]
 dependencies = [
-	"diagnosticism>=0.16.0",
+	"diagnosticism>=0.17.0",
 ]
 description = "Tokio-like functionality for Python"
 license-files = ["LICENSE"]
@@ -39,13 +39,13 @@ Issues = "https://github.com/synesissoftware/asynkio/issues"
 [project.optional-dependencies]
 dev = [
 	"aiofiles",
-	"diagnosticism>=0.16.0",
+	"diagnosticism>=0.17.0",
 	"pyclasp>=0.8.10",
 	"pytest>=8.4.1",
 ]
 test = [
 	"aiofiles",
-	"diagnosticism>=0.16.0",
+	"diagnosticism>=0.17.0",
 	"pyclasp>=0.8.10",
 	"pytest>=8.4.1",
 ]
@@ -53,7 +53,7 @@ test = [
 [dependency-groups]
 dev = [
 	"aiofiles",
-	"diagnosticism>=0.16.0",
+	"diagnosticism>=0.17.0",
 	"pyclasp>=0.8.10",
 	"pytest>=8.4.1",
 ]
