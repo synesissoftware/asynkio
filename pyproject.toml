@@ -27,7 +27,7 @@ license-files = ["LICENSE"]
 name = "asynkio"
 readme = "README.md"
 requires-python = ">=3.11"
-version = "0.0.3"
+version = "0.0.4"
 
 [project.urls]
 Changelog = "https://github.com/synesissoftware/asynkio/releases"
@@ -37,13 +37,13 @@ Issues = "https://github.com/synesissoftware/asynkio/issues"
 [project.optional-dependencies]
 dev = [
 	"aiofiles",
-	"diagnosticism",
+	"diagnosticism >=0.16, <1",
 	"pyclasp>=0.8.10",
 	"pytest>=8.4.1",
 ]
 test = [
 	"aiofiles",
-	"diagnosticism",
+	"diagnosticism >=0.16, <1",
 	"pyclasp>=0.8.10",
 	"pytest>=8.4.1",
 ]
@@ -51,7 +51,7 @@ test = [
 [dependency-groups]
 dev = [
 	"aiofiles",
-	"diagnosticism",
+	"diagnosticism >=0.16, <1",
 	"pyclasp>=0.8.10",
 	"pytest>=8.4.1",
 ]

@@ -1,6 +1,11 @@
 # **asynkio** Changes
 
 
+## 0.0.4 - 11th July 2026
+
+* updated dependencies;
+
+
 ## 0.0.3 - 27th June 2026
 
 * corrected project dependencies:
