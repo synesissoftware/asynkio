@@ -18,14 +18,14 @@ Tokio-like functionality for Python
 - [Components](#components)
 - [Examples](#examples)
 - [Project Information](#project-information)
-	- [Where to get help](#where-to-get-help)
-	- [Contribution guidelines](#contribution-guidelines)
-	- [Dependencies](#dependencies)
-		- [Efferent (fan-out)](#efferent-fan-out)
-			- [Development Dependencies](#development-dependencies)
-		- [Afferent (fan-in)](#afferent-fan-in)
-	- [Related projects](#related-projects)
-	- [License](#license)
+  - [Where to get help](#where-to-get-help)
+  - [Contribution guidelines](#contribution-guidelines)
+  - [Dependencies](#dependencies)
+    - [Efferent (fan-out)](#efferent-fan-out)
+      - [Development Dependencies](#development-dependencies)
+    - [Afferent (fan-in)](#afferent-fan-in)
+  - [Related projects](#related-projects)
+  - [License](#license)
 
 
 ## Introduction
@@ -118,12 +118,9 @@ None.
 
 ##### Development Dependencies
 
-* [**aiofiles**](https://pypi.org/project/aiofiles/) — development and
-  demonstration tooling;
-* [**diagnosticism**](https://pypi.org/project/diagnosticism/) — example
-  scripts under `examples/`;
-* [**pyclasp**](https://pypi.org/project/pyclasp/) — development and
-  demonstration tooling;
+* [**aiofiles**](https://pypi.org/project/aiofiles/) — development and demonstration tooling;
+* [**diagnosticism**](https://pypi.org/project/diagnosticism/) — example scripts under `examples/`;
+* [**pyclasp**](https://pypi.org/project/pyclasp/) — development and demonstration tooling;
 * [**pytest**](https://pypi.org/project/pytest/) — unit-test runner;
 
 
@@ -136,10 +133,8 @@ None (currently).
 
 ### Related projects
 
-* [**Tokio**](https://github.com/tokio-rs/tokio) (**Rust**) — the library
-  whose time types **asynkio** emulates;
-* [**Diagnosticism.Python**](https://github.com/synesissoftware/Diagnosticism.Python/)
-  — used in `examples/` scripts;
+* [**Tokio**](https://github.com/tokio-rs/tokio) (**Rust**) — the library whose time types **asynkio** emulates;
+* [**Diagnosticism.Python**](https://github.com/synesissoftware/Diagnosticism.Python/) — used in `examples/` scripts;
 
 
 ### License
