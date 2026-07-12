@@ -23,6 +23,7 @@ dev = [
     { name = "diagnosticism" },
     { name = "pyclasp" },
     { name = "pytest" },
+    { name = "ruff" },
 ]
 test = [
     { name = "aiofiles" },
@@ -30,6 +31,7 @@ test = [
     { name = "diagnosticism" },
     { name = "pyclasp" },
     { name = "pytest" },
+    { name = "ruff" },
 ]
 
 [package.dev-dependencies]
@@ -54,6 +56,8 @@ requires-dist = [
     { name = "pyclasp", marker = "extra == 'test'", specifier = ">=0.8.10" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.4.1" },
     { name = "pytest", marker = "extra == 'test'", specifier = ">=8.4.1" },
+    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.4.0" },
+    { name = "ruff", marker = "extra == 'test'", specifier = ">=0.4.0" },
 ]
 provides-extras = ["dev", "test"]
 

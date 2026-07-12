@@ -123,6 +123,7 @@ None.
 * [**diagnosticism**](https://pypi.org/project/diagnosticism/) — example scripts under `examples/`;
 * [**pyclasp**](https://pypi.org/project/pyclasp/) — development and demonstration tooling;
 * [**pytest**](https://pypi.org/project/pytest/) — unit-test runner;
+* [**ruff**](https://pypi.org/project/ruff/) — linter;
 
 
 #### Afferent (fan-in)
