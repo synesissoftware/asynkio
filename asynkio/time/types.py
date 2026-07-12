@@ -1,4 +1,3 @@
-
 from datetime import (
     datetime,
     timezone,
@@ -13,7 +12,9 @@ class Duration:
     """
 
     __slots__ = (
+        # invariant fields:
         '_duration',
+        # variant fields:
     )
 
     def __init__(
@@ -29,7 +30,7 @@ class Duration:
         self._duration = to_ns - from_ns
 
     @staticmethod
-    def from_nanos(t_ns : int) -> Self:
+    def from_nanos(t_ns: int) -> Self:
         """
         Creates a new instance from the specified number of nanoseconds.
         """
@@ -37,7 +38,7 @@ class Duration:
         return Duration(0, t_ns)
 
     @staticmethod
-    def from_micros(t_us : int) -> Self:
+    def from_micros(t_us: int) -> Self:
         """
         Creates a new instance from the specified number of microseconds.
         """
@@ -45,7 +46,7 @@ class Duration:
         return Duration(0, t_us * 1_000)
 
     @staticmethod
-    def from_millis(t_ms : int) -> Self:
+    def from_millis(t_ms: int) -> Self:
         """
         Creates a new instance from the specified number of milliseconds.
         """
@@ -53,7 +54,7 @@ class Duration:
         return Duration(0, t_ms * 1_000_000)
 
     @staticmethod
-    def from_secs(t_s : int) -> Self:
+    def from_secs(t_s: int) -> Self:
         """
         Creates a new instance from the specified number of seconds.
         """
@@ -117,7 +118,7 @@ class Duration:
         return (self._duration % 1_000_000_000) // 1_000_000
 
     @staticmethod
-    def _scale_index(n : int) -> tuple[int, int]:
+    def _scale_index(n: int) -> tuple[int, int]:
 
         _SCALES = [
             1,
@@ -141,18 +142,18 @@ class Duration:
 
             return (11, _SCALES[11])
 
-        l = 0
-        h = 11
+        lo = 0
+        hi = 11
 
         count = 0
 
-        while l <= h:
+        while lo <= hi:
 
             count += 1
 
             assert count < 5, f"too many loops while trying to scale {n}"
 
-            m = (h + l) // 2
+            m = (hi + lo) // 2
 
             b = _SCALES[m]
 
@@ -162,7 +163,7 @@ class Duration:
 
             if n < b:
 
-                h = m
+                hi = m
 
                 continue
             else:
@@ -173,14 +174,14 @@ class Duration:
                     return (m, b)
                 else:
 
-                    l = m
+                    lo = m
 
         return (11, _SCALES[11])
 
     @staticmethod
     def duration_to_string(
-        duration : Self | int,
-        format_spec : str = '',
+        duration: Self | int,
+        format_spec: str = '',
     ) -> str:
 
         v = int(duration)
@@ -257,7 +258,6 @@ class Duration:
 
                 divisor_1 = 10
 
-
             v //= divisor_0
 
             whole = v // divisor_1
@@ -270,7 +270,7 @@ class Duration:
                 suffix,
             )
 
-    def __eq__(self, rhs : Self | float | int) -> bool:
+    def __eq__(self, rhs: Self | float | int) -> bool:
 
         if isinstance(rhs, Duration):
 
@@ -308,7 +308,7 @@ class Duration:
 
         return self._duration
 
-    def __add__(self, rhs : Self) -> Self:
+    def __add__(self, rhs: Self) -> Self:
 
         if isinstance(rhs, Duration):
 
@@ -316,7 +316,7 @@ class Duration:
 
         return NotImplemented
 
-    def __sub__(self, rhs : Self) -> Self:
+    def __sub__(self, rhs: Self) -> Self:
 
         if isinstance(rhs, Duration):
 
@@ -324,7 +324,7 @@ class Duration:
 
         return NotImplemented
 
-    def __mul__(self, rhs : float | int) -> Self:
+    def __mul__(self, rhs: float | int) -> Self:
 
         if isinstance(rhs, float):
 
@@ -336,7 +336,7 @@ class Duration:
 
         return NotImplemented
 
-    def __truediv__(self, rhs : Self | float | int) -> Self:
+    def __truediv__(self, rhs: Self | float | int) -> Self:
 
         if isinstance(rhs, (Duration, int)):
 
@@ -355,7 +355,9 @@ class Instant:
     """
 
     __slots__ = (
+        # invariant fields:
         '_t',
+        # variant fields:
     )
 
     def __init__(self, t_ns):
@@ -366,7 +368,7 @@ class Instant:
         self._t = t_ns
 
     @staticmethod
-    def _t_ns_to_d_utc(t_ns : int) -> datetime:
+    def _t_ns_to_d_utc(t_ns: int) -> datetime:
         """
         Convert the number of nanoseconds since epoch into a datetime
         instance assuming UTC.
@@ -386,8 +388,8 @@ class Instant:
 
     @staticmethod
     def instant_to_string(
-        instant : Self | int,
-        format_spec : str = '',
+        instant: Self | int,
+        format_spec: str = '',
     ) -> str:
 
         typed = None
@@ -440,7 +442,7 @@ class Instant:
 
         if typed:
 
-            if typed[0] == int:
+            if typed[0] is int:
 
                 fmt = ''
 

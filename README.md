@@ -119,6 +119,7 @@ None.
 ##### Development Dependencies
 
 * [**aiofiles**](https://pypi.org/project/aiofiles/) — development and demonstration tooling;
+* [**black**](https://pypi.org/project/black/) — code formatter;
 * [**diagnosticism**](https://pypi.org/project/diagnosticism/) — example scripts under `examples/`;
 * [**pyclasp**](https://pypi.org/project/pyclasp/) — development and demonstration tooling;
 * [**pytest**](https://pypi.org/project/pytest/) — unit-test runner;

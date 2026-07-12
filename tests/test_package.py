@@ -14,3 +14,4 @@ def test_all_names_are_defined_in_time():
 
     for name in asynkio.time.__all__:
         assert hasattr(asynkio.time, name), name
+

@@ -7,7 +7,7 @@
 #           `asynkio.time.Interval`.
 #
 # Created:  25th July 2025
-# Updated:  24th August 2025
+# Updated:  12th July 2026
 #
 # Copyright (c) Matthew Wilson, Synesis Information Systems Pty Ltd
 # All rights reserved
@@ -24,6 +24,7 @@ import math
 
 # ######################################
 # Duration
+
 
 def test_Duration_DURATION_0():
 
@@ -259,6 +260,7 @@ def test_Duration_MUL():
 # ######################################
 # Instant
 
+
 def test_Instant_CREATE():
 
     instant_1 = Instant.now()
@@ -275,7 +277,6 @@ def test_Instant_CREATE():
     max_duration_delta = 5
 
     assert duration_1_2.as_micros() < max_duration_delta, f"{duration_1_2.as_micros()} should be < {max_duration_delta}"
-
 
     instant_3 = instant_1 + Duration.from_micros(123)
 
@@ -311,7 +312,6 @@ def test_Instant_FMT():
     assert "1970-01-01T00:00:00.000000Z" == format(instant_0, '')
 
     assert "0" == format(instant_0, 'd')
-
 
     instant_x = Instant(1_754_271_065_290_980_000)
 

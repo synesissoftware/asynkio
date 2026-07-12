@@ -6,7 +6,7 @@
 # Purpose:  `Interval` demonstration with `SKIP` missed-tick behaviour.
 #
 # Created:  3rd August 2025
-# Updated:  27th June 2026
+# Updated:  12th July 2026
 #
 # Author:   Matthew Wilson
 #
@@ -67,8 +67,12 @@ async def run_with_skips(
         delta_N = t2 - t0
         delta_M = p * count
         delta_I = Duration.from_nanos(delta_N.as_nanos() % p.as_nanos())
+        skew = delta_N - delta_M
 
-        d.log(sev.INFO, f"⚙️  #{count} : ∆={delta_N}, ∂={delta_1}, {(delta_N - delta_M).as_nanos():,} ({delta_N - delta_M}); ∂={delta_I}")
+        d.log(
+            sev.INFO,
+            f"⚙️  #{count} : ∆={delta_N}, ∂={delta_1}, {(skew).as_nanos():,} ({skew}); ∂={delta_I}",
+        )
 
         t1 = t2
 
@@ -101,3 +105,4 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
 
         pass
+

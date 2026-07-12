@@ -2,6 +2,7 @@
 # directories (by name)
 
 /.bin/
+/.ruff_cache/
 
 build/
 dist/
