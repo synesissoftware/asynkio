@@ -1,7 +1,7 @@
 # **asynkio** Changes
 
 
-## 0.0.5 - 12th July 2026
+## 0.0.6 - 12th July 2026
 
 * added **black** / **ruff** formatting and linting (CI + **pyproject.toml**);
 
