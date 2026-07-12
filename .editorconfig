@@ -1,0 +1,13 @@
+root = true
+
+# Text files should end with a trailing blank line (see
+# scripts/ensure_trailing_blank_line.sh). insert_final_newline alone is not
+# enough: black/ruff keep a single "\n", and this project requires an extra
+# blank line for vi/vim. Before black --check (e.g. in CI), run
+# scripts/strip_trailing_blank_line.sh first.
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true

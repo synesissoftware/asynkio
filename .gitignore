@@ -2,17 +2,18 @@
 # directories (by name)
 
 /.bin/
+/.ruff_cache/
 
 build/
 dist/
 dist-old/
 scratch/
 
-*.egg-info/
-**/__pycache__/
-
 
 # directories (by pattern)
+
+*.egg-info/
+**/__pycache__/
 
 
 # files (by name)

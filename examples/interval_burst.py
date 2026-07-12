@@ -6,7 +6,7 @@
 # Purpose:  `Interval` demonstration with `BURST` missed-tick behaviour.
 #
 # Created:  3rd August 2025
-# Updated:  27th June 2026
+# Updated:  12th July 2026
 #
 # Author:   Matthew Wilson
 #
@@ -16,17 +16,18 @@
 # ######################################################################## #
 
 
+import asyncio
+import time
+
+import diagnosticism as d
+import diagnosticism.severity as sev
+
 from asynkio.time import (
     Duration,
     Instant,
     Interval,
     MissedTickBehaviour,
 )
-
-import asyncio
-import diagnosticism as d
-import diagnosticism.severity as sev
-import time
 
 
 async def run_with_bursts(
@@ -67,7 +68,10 @@ async def run_with_bursts(
         delta_N = t2 - t0
         delta_M = p * count
 
-        d.log(sev.INFO, f"⚙️  #{count} : ∆={delta_N}, ∂={delta_1}, {(delta_N - delta_M).as_nanos():,} ({delta_N - delta_M})")
+        d.log(
+            sev.INFO,
+            f"⚙️  #{count} : ∆={delta_N}, ∂={delta_1}, {(delta_N - delta_M).as_nanos():,} ({delta_N - delta_M})",
+        )
 
         t1 = t2
 
@@ -100,3 +104,4 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
 
         pass
+

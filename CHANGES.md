@@ -7,10 +7,25 @@
 * removed duplicated duration formatting logic from `asynkio.time.types`;
 
 
+## 0.0.7 - 12th July 2026
+
+* split implementation and test files for `Duration` and `Instant`;
+
+
+## 0.0.6 - 12th July 2026
+
+* added **black** / **ruff** formatting and linting (CI + **pyproject.toml**);
+
+
+## 0.0.4 - 11th July 2026
+
+* updated dependencies;
+
+
 ## 0.0.3 - 27th June 2026
 
 * corrected project dependencies:
-  * removed spurious runtime dependencies (`asyncio`, `diagnosticism`, `pytest`);
+  * removed spurious runtime dependencies (**asyncio**, **diagnosticism**, **pytest**);
   * moved test/development dependencies to `[project.optional-dependencies]` (`dev`, `test`);
   * added `[dependency-groups] dev` so `uv sync` installs tooling for local development and testing;
 * defined public API via `__all__` and package exports;
@@ -19,7 +34,7 @@
 * aligned README badges with Diagnosticism.Python 0.16 style;
 * added **pyproject.toml** classifiers for Python 3.11+ (including 3.14);
 * fixed misspelt unit test names;
-* added `Interval` unit tests with mocked `asyncio`;
+* added `Interval` unit tests with mocked **asyncio**;
 * fixed `Interval.negative_bias()` return value;
 * extended GitHub Actions workflow for feature branches, and Python 3.14;
 * completed README **Dependencies**, **Examples**, and **Related projects** sections;

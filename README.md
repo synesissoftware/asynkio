@@ -120,10 +120,10 @@ Libraries upon which **asynkio** depends:
 
 ##### Development Dependencies
 
-* [**aiofiles**](https://pypi.org/project/aiofiles/) — development and
-  demonstration tooling;
-* [**pyclasp**](https://pypi.org/project/pyclasp/) — development and
-  demonstration tooling;
+* [**aiofiles**](https://pypi.org/project/aiofiles/) — development and demonstration tooling;
+* [**black**](https://pypi.org/project/black/) — code formatter;
+* [**diagnosticism**](https://pypi.org/project/diagnosticism/) — example scripts under `examples/`;
+* [**pyclasp**](https://pypi.org/project/pyclasp/) — development and demonstration tooling;
 * [**pytest**](https://pypi.org/project/pytest/) — unit-test runner;
 
 
@@ -136,11 +136,8 @@ None (currently).
 
 ### Related projects
 
-* [**Tokio**](https://github.com/tokio-rs/tokio) (**Rust**) — the library
-  whose time types **asynkio** emulates;
-* [**Diagnosticism.Python**](https://github.com/synesissoftware/Diagnosticism.Python/)
-  — runtime dependency for `Duration` formatting; also used in `examples/`
-  scripts;
+* [**Tokio**](https://github.com/tokio-rs/tokio) (**Rust**) — the library whose time types **asynkio** emulates;
+* [**Diagnosticism.Python**](https://github.com/synesissoftware/Diagnosticism.Python/) — used in `examples/` scripts;
 
 
 ### License

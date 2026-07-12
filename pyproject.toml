@@ -39,13 +39,15 @@ Issues = "https://github.com/synesissoftware/asynkio/issues"
 [project.optional-dependencies]
 dev = [
 	"aiofiles",
-	"diagnosticism>=0.17.0",
+	"black>=24.1",
+	"diagnosticism >=0.17, <1",
 	"pyclasp>=0.8.10",
 	"pytest>=8.4.1",
 ]
 test = [
 	"aiofiles",
-	"diagnosticism>=0.17.0",
+	"black>=24.1",
+	"diagnosticism >=0.17, <1",
 	"pyclasp>=0.8.10",
 	"pytest>=8.4.1",
 ]
@@ -53,13 +55,38 @@ test = [
 [dependency-groups]
 dev = [
 	"aiofiles",
-	"diagnosticism>=0.17.0",
+	"black>=24.1",
+	"diagnosticism >=0.17, <1",
 	"pyclasp>=0.8.10",
 	"pytest>=8.4.1",
+	"ruff>=0.4.0",
 ]
+
+[tool.black]
+line-length = 120
+skip-string-normalization = true
+target-version = ["py311", "py312", "py313", "py314"]
+
+[tool.flake8]
+max-line-length = 120
+max-doc-length = 76
+
+[tool.ruff]
+line-length = 120
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 76
 
 [tool.setuptools.packages.find]
 exclude = [
 	"examples",
 	"tests",
 ]
+

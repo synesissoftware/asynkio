@@ -1,11 +1,14 @@
-
-from .types import (
-    Duration,
-    Instant,
-)
+# Definition of `Interval` and `MissedTickBehaviour`.
 
 import asyncio
 import enum
+
+from .duration import (
+    Duration,
+)
+from .instant import (
+    Instant,
+)
 
 
 class MissedTickBehaviour(enum.IntEnum):
@@ -31,7 +34,6 @@ class MissedTickBehaviour(enum.IntEnum):
     """
     SKIP = 3
 
-
     def _to_str(self):
 
         if MissedTickBehaviour.BURST == self:
@@ -49,7 +51,7 @@ class MissedTickBehaviour(enum.IntEnum):
         return NotImplemented
 
     @staticmethod
-    def try_parse(s : str):
+    def try_parse(s: str):
         """
         Attempts, in a case-insensitive manner, to interpret a string into
         a named member of the class, i.e. a recognised enumerator; returns
@@ -82,21 +84,21 @@ class Interval:
     """
 
     __slots__ = (
-        # invariant fields
+        # invariant fields:
         '_period_ns',
         '_missed_tick_behaviour',
         '_name',
         '_negative_bias',
         '_reference_instant',
-        # variant fields
+        # variant fields:
         '_recent_instant',
         '_event_count',
     )
 
     def __init__(
         self,
-        period : Duration | int,
-        missed_tick_behaviour : MissedTickBehaviour=MissedTickBehaviour.SKIP,
+        period: Duration | int,
+        missed_tick_behaviour: MissedTickBehaviour = MissedTickBehaviour.SKIP,
         name=None,
         negative_bias=None,
     ):
@@ -104,14 +106,20 @@ class Interval:
         Creates an instance, based on the given parameters.
         """
 
-        assert isinstance(period, (Duration, int)), "`period` must be instance of `Duration` or `int` (which specifies nanoseconds)"
+        assert isinstance(
+            period, (Duration, int)
+        ), "`period` must be instance of `Duration` or `int` (which specifies nanoseconds)"
 
-        assert negative_bias is None or negative_bias < int(period), "invalid `negative_bias` ({negative_bias}) given the `period` ({period)}"
+        assert negative_bias is None or negative_bias < int(
+            period
+        ), "invalid `negative_bias` ({negative_bias}) given the `period` ({period)}"
 
         self._period_ns = int(period)
         self._missed_tick_behaviour = missed_tick_behaviour
         self._name = str(name) if name else ''
-        self._negative_bias = negative_bias if isinstance(negative_bias, int) else 400_000 if self._period_ns > 100_000_000 else 0
+        self._negative_bias = (
+            negative_bias if isinstance(negative_bias, int) else 400_000 if self._period_ns > 100_000_000 else 0
+        )
         self._reference_instant = Instant.now()
 
         self._recent_instant = None
@@ -119,16 +127,18 @@ class Interval:
 
     def __repr__(self):
 
-        return "" \
-            f"<{self.__module__}.{self.__class__.__name__}: " \
-            f"_period_ns: {self._period_ns:,}; " \
-            f"_missed_tick_behaviour: {self._missed_tick_behaviour:}; " \
-            f"_name: {self._name}; " \
-            f"_negative_bias: {self._negative_bias}; " \
-            f"_reference_instant: {self._reference_instant:}; " \
-            f"_recent_instant: {self._recent_instant:}; " \
-            f"_event_count: {self._event_count:,}; " \
+        return (
+            ""
+            f"<{self.__module__}.{self.__class__.__name__}: "
+            f"_period_ns: {self._period_ns:,}; "
+            f"_missed_tick_behaviour: {self._missed_tick_behaviour:}; "
+            f"_name: {self._name}; "
+            f"_negative_bias: {self._negative_bias}; "
+            f"_reference_instant: {self._reference_instant:}; "
+            f"_recent_instant: {self._recent_instant:}; "
+            f"_event_count: {self._event_count:,}; "
             ">"
+        )
 
     def __await__(self):
         """
@@ -139,7 +149,6 @@ class Interval:
 
         now = Instant.now()
 
-
         if self._missed_tick_behaviour == MissedTickBehaviour.DELAY:
 
             # simply wait for given duration
@@ -148,14 +157,12 @@ class Interval:
 
             return asyncio.sleep((self._period_ns - self._negative_bias) / 1_000_000_000).__await__()
 
-
-        duration : Duration = now - self._reference_instant
+        duration: Duration = now - self._reference_instant
         duration_ns = duration.as_nanos()
 
         # calculate number of intervals (`q`) and remainder (`r`)
 
         q, r = divmod(duration_ns, self._period_ns)
-
 
         if self._missed_tick_behaviour == MissedTickBehavior.BURST:
 
@@ -176,7 +183,6 @@ class Interval:
                 self._recent_instant = now
 
                 return asyncio.sleep(r / 1_000_000_000).__await__()
-
 
         # `SKIP` behaviour:
         #
@@ -251,3 +257,4 @@ class Interval:
         """
 
         return self._reference_instant
+

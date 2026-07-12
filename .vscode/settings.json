@@ -2,7 +2,7 @@
 	"[python]": {
 		"diffEditor.ignoreTrimWhitespace": false,
 		"editor.insertSpaces": true,
-		"editor.rulers": [ 51, 61, 76 ],
+		"editor.rulers": [ 72, 76, 120 ],
 		"editor.tabSize": 4,
 	},
 	"editor.insertSpaces": false,
@@ -13,7 +13,10 @@
 		"**/*.egg-info": true,
 		"**/*.swp": true,
 	},
+	"editor.rulers": [ 76 ],
+	"files.insertFinalNewline": true,
 	"files.trimTrailingWhitespace": true,
 	"python.analysis.typeCheckingMode": "standard",
 	"python.languageServer": "Pylance",
 }
+

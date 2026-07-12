@@ -1,4 +1,3 @@
-
 __version__ = '0.1.0'
 
 from .time import (
@@ -9,13 +8,12 @@ from .time import (
     MissedTickBehaviour,
 )
 
-
 __all__ = [
     '__version__',
-
     'Duration',
     'Instant',
     'Interval',
     'MissedTickBehavior',
     'MissedTickBehaviour',
 ]
+
