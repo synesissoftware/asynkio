@@ -52,7 +52,7 @@ async def run_with_delays(
 
         if 0 != count and 0 == (count % delay_increment):
 
-            d.log(sev.INFO, f"⌛  hard sleeping for {delay_duration} ...")
+            d.log(sev.NOTICE, f"⌛  hard sleeping for {delay_duration} ...")
 
             time.sleep(int(delay_duration) / 1_000_000_000.0)
 
