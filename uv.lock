@@ -13,8 +13,11 @@ wheels = [
 
 [[package]]
 name = "asynkio"
-version = "0.0.7"
+version = "0.1.0"
 source = { editable = "." }
+dependencies = [
+    { name = "diagnosticism" },
+]
 
 [package.optional-dependencies]
 dev = [
@@ -48,8 +51,9 @@ requires-dist = [
     { name = "aiofiles", marker = "extra == 'test'" },
     { name = "black", marker = "extra == 'dev'", specifier = ">=24.1" },
     { name = "black", marker = "extra == 'test'", specifier = ">=24.1" },
-    { name = "diagnosticism", marker = "extra == 'dev'", specifier = ">=0.16,<1" },
-    { name = "diagnosticism", marker = "extra == 'test'", specifier = ">=0.16,<1" },
+    { name = "diagnosticism", specifier = ">=0.17.0" },
+    { name = "diagnosticism", marker = "extra == 'dev'", specifier = ">=0.17,<1" },
+    { name = "diagnosticism", marker = "extra == 'test'", specifier = ">=0.17,<1" },
     { name = "pyclasp", marker = "extra == 'dev'", specifier = ">=0.8.10" },
     { name = "pyclasp", marker = "extra == 'test'", specifier = ">=0.8.10" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.4.1" },
@@ -61,7 +65,7 @@ provides-extras = ["dev", "test"]
 dev = [
     { name = "aiofiles" },
     { name = "black", specifier = ">=24.1" },
-    { name = "diagnosticism", specifier = ">=0.16,<1" },
+    { name = "diagnosticism", specifier = ">=0.17,<1" },
     { name = "pyclasp", specifier = ">=0.8.10" },
     { name = "pytest", specifier = ">=8.4.1" },
     { name = "ruff", specifier = ">=0.4.0" },
