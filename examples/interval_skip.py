@@ -72,7 +72,7 @@ async def run_with_skips(
 
         d.log(
             sev.INFO,
-            f"⚙️  #{count} : ∆={delta_N}, ∂={delta_1}, {(skew).as_nanos():,} ({skew}); ∂={delta_I}",
+            f"⚙️  #{count} : ∆={delta_N}, ∂={delta_1}, {skew.as_nanos():,} ({skew}); ∂={delta_I}",
         )
 
         t1 = t2

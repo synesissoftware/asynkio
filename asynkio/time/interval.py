@@ -1,12 +1,14 @@
 # Definition of `Interval` and `MissedTickBehaviour`.
 
-from .types import (
-    Duration,
-    Instant,
-)
-
 import asyncio
 import enum
+
+from .duration import (
+    Duration,
+)
+from .instant import (
+    Instant,
+)
 
 
 class MissedTickBehaviour(enum.IntEnum):
