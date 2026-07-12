@@ -261,3 +261,4 @@ def test_MissedTickBehaviour_try_parse():
     assert MissedTickBehaviour.SKIP == MissedTickBehaviour.try_parse('SKIP')
     assert MissedTickBehaviour.DELAY == MissedTickBehaviour.try_parse('Delay')
     assert None is MissedTickBehaviour.try_parse('unknown')
+
