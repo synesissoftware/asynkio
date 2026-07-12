@@ -71,6 +71,13 @@ max-doc-length = 76
 
 [tool.ruff]
 line-length = 120
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
 
 [tool.ruff.lint.pycodestyle]
 max-doc-length = 76
