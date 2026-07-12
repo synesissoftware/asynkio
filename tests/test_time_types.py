@@ -15,12 +15,12 @@
 # ######################################################################## #
 
 
+import math
+
 from asynkio.time import (
     Duration,
     Instant,
 )
-
-import math
 
 # ######################################
 # Duration
