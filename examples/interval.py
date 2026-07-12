@@ -16,18 +16,19 @@
 # ######################################################################## #
 
 
+import asyncio
+import sys
+import time
+
+import diagnosticism as d
+import diagnosticism.severity as sev
+
 from asynkio.time import (
     Duration,
     Instant,
     Interval,
     MissedTickBehaviour,
 )
-
-import asyncio
-import diagnosticism as d
-import diagnosticism.severity as sev
-import sys
-import time
 
 
 def _delta_as_ns(

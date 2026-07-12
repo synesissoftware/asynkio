@@ -1,11 +1,13 @@
+from .duration import (
+    Duration,
+)
+from .instant import (
+    Instant,
+)
 from .interval import (
     Interval,
     MissedTickBehavior,
     MissedTickBehaviour,
-)
-from .types import (
-    Duration,
-    Instant,
 )
 
 __all__ = [

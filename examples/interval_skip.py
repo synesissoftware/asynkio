@@ -16,17 +16,18 @@
 # ######################################################################## #
 
 
+import asyncio
+import time
+
+import diagnosticism as d
+import diagnosticism.severity as sev
+
 from asynkio.time import (
     Duration,
     Instant,
     Interval,
     MissedTickBehaviour,
 )
-
-import asyncio
-import diagnosticism as d
-import diagnosticism.severity as sev
-import time
 
 
 async def run_with_skips(
@@ -71,7 +72,7 @@ async def run_with_skips(
 
         d.log(
             sev.INFO,
-            f"⚙️  #{count} : ∆={delta_N}, ∂={delta_1}, {(skew).as_nanos():,} ({skew}); ∂={delta_I}",
+            f"⚙️  #{count} : ∆={delta_N}, ∂={delta_1}, {skew.as_nanos():,} ({skew}); ∂={delta_I}",
         )
 
         t1 = t2

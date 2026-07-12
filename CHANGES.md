@@ -1,6 +1,11 @@
 # **asynkio** Changes
 
 
+## 0.0.7 - 12th July 2026
+
+* split implementation and test files for `Duration` and `Instant`;
+
+
 ## 0.0.6 - 12th July 2026
 
 * added **black** / **ruff** formatting and linting (CI + **pyproject.toml**);
