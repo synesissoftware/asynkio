@@ -1,6 +1,11 @@
 # **asynkio** Changes
 
 
+## 0.0.8 - 12th July 2026
+
+* updated GitHub Actions to run **ruff** / **black** (with trailing-blank-line strip before checks);
+
+
 ## 0.0.7 - 12th July 2026
 
 * split implementation and test files for `Duration` and `Instant`;
