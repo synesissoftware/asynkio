@@ -500,7 +500,7 @@ class Instant:
 
             return self._t < rhs._t
 
-        raise NotImplemented
+        return NotImplemented
 
     def __le__(self, rhs) -> bool:
         """
@@ -512,7 +512,7 @@ class Instant:
 
             return self._t <= rhs._t
 
-        raise NotImplemented
+        return NotImplemented
 
     def __sub__(self, rhs) -> Duration | Self:
         """
