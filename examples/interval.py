@@ -69,6 +69,8 @@ async def run_asyncio_sleep(
 
         if synchronous_sleep_ms:
 
+            d.log(sev.NOTICE, f"⌛  hard sleeping for {synchronous_sleep_ms}ms ...")
+
             time.sleep(synchronous_sleep_ms / 1_000)
 
         await asyncio.sleep(timeout_ms / 1_000)
@@ -100,6 +102,8 @@ async def run_asynkio_interval(
     while True:
 
         if synchronous_sleep_ms:
+
+            d.log(sev.NOTICE, f"⌛  hard sleeping for {synchronous_sleep_ms}ms ...")
 
             time.sleep(synchronous_sleep_ms / 1_000)
 

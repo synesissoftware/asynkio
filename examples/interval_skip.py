@@ -40,6 +40,7 @@ async def run_with_skips(
     interval = Interval(
         Duration.from_secs(1),
         missed_tick_behaviour=MissedTickBehaviour.SKIP,
+        negative_bias=200_000,
     )
 
     t0 = Instant.now()
@@ -52,7 +53,7 @@ async def run_with_skips(
 
         if 0 != count and 0 == (count % skip_increment):
 
-            d.log(sev.INFO, f"⌛  hard sleeping for {skip_duration} ...")
+            d.log(sev.NOTICE, f"⌛  hard sleeping for {skip_duration} ...")
 
             time.sleep(int(skip_duration) / 1_000_000_000.0)
 

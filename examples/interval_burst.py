@@ -52,7 +52,7 @@ async def run_with_bursts(
 
         if 0 != count and 0 == (count % burst_increment):
 
-            d.log(sev.INFO, f"⌛  hard sleeping for {burst_duration} ...")
+            d.log(sev.NOTICE, f"⌛  hard sleeping for {burst_duration} ...")
 
             time.sleep(int(burst_duration) / 1_000_000_000.0)
 

@@ -1,6 +1,11 @@
 # **asynkio** Changes
 
 
+## 0.0.9 - 14th July 2026
+
+* changes to `SKIP` (and `BURST`) functionality to provide more even behaviour;
+
+
 ## 0.0.8 - 12th July 2026
 
 * updated GitHub Actions to run **ruff** / **black** (with trailing-blank-line strip before checks);
