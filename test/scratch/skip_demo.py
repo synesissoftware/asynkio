@@ -150,7 +150,8 @@ async def heartbeat(
 
         d.log(
             sev.INFORMATIONAL,
-            f"❤️  #{count} +{elapsed_s}s ∂={since_last} ({q}, {nanoseconds_to_string(r)}) hb={heartbeat_gram.to_nmmm()} | {body}",
+            f"❤️  #{count} +{elapsed_s}s ∂={since_last} ({q}, {nanoseconds_to_string(r)}) hb={heartbeat_gram.to_nmmm()}"
+            f" | {body}",
         )
 
 
