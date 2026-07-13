@@ -46,7 +46,7 @@ from asynkio.time import (
     MissedTickBehaviour,
 )
 
-HEARTBEAT_PERIOD_SECS = 10
+HEARTBEAT_PERIOD_SECS = 5
 
 
 async def busy_service(
@@ -111,6 +111,7 @@ async def heartbeat(
         Duration.from_secs(HEARTBEAT_PERIOD_SECS),
         missed_tick_behaviour=MissedTickBehaviour.SKIP,
         name='skip-demo-heartbeat',
+        negative_bias=100_000,
     )
 
     t0 = Instant.now()
@@ -124,6 +125,8 @@ async def heartbeat(
         count += 1
 
         now = Instant.now()
+
+        q, r = divmod((now - t0).as_nanos(), interval.period().as_nanos())
 
         # Floored whole seconds since heartbeat start — repeats on accidental
         # multi-fire within the same second (the SKIP defect signature).
@@ -147,7 +150,7 @@ async def heartbeat(
 
         d.log(
             sev.INFORMATIONAL,
-            f"❤️  #{count} +{elapsed_s}s ∂={since_last} hb={heartbeat_gram.to_nmmm()} | {body}",
+            f"❤️  #{count} +{elapsed_s}s ∂={since_last} ({q}, {nanoseconds_to_string(r)}) hb={heartbeat_gram.to_nmmm()} | {body}",
         )
 
 

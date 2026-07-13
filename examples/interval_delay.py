@@ -40,6 +40,7 @@ async def run_with_delays(
     interval = Interval(
         Duration.from_secs(1),
         missed_tick_behaviour=MissedTickBehaviour.DELAY,
+        negative_bias=1_000_000,
     )
 
     t0 = Instant.now()

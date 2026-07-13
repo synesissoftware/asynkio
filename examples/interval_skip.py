@@ -40,6 +40,7 @@ async def run_with_skips(
     interval = Interval(
         Duration.from_secs(1),
         missed_tick_behaviour=MissedTickBehaviour.SKIP,
+        negative_bias=200_000,
     )
 
     t0 = Instant.now()
