@@ -43,6 +43,7 @@ dev = [
 	"diagnosticism >=0.17, <1",
 	"pyclasp>=0.8.10",
 	"pytest>=8.4.1",
+	"ruff>=0.4.0",
 ]
 test = [
 	"aiofiles",
@@ -50,6 +51,7 @@ test = [
 	"diagnosticism >=0.17, <1",
 	"pyclasp>=0.8.10",
 	"pytest>=8.4.1",
+	"ruff>=0.4.0",
 ]
 
 [dependency-groups]

@@ -151,6 +151,8 @@ class Interval:
 
         if self._missed_tick_behaviour == MissedTickBehaviour.DELAY:
 
+            # `DELAY` behaviour:
+            #
             # simply wait for given duration
 
             self._recent_instant = now
@@ -166,11 +168,13 @@ class Interval:
 
         if self._missed_tick_behaviour == MissedTickBehavior.BURST:
 
-            # either ...
+            # `BURST` behaviour:
+            #
+            # if we're behind the event count, then either ...
 
             if self._event_count <= q:
 
-                # ... respond immediately if more than a full interval, or ...
+                # ... respond immediately if more than full interval, or ...
 
                 self._recent_instant = now
 
@@ -178,25 +182,40 @@ class Interval:
 
             if self._event_count + 1 == q:
 
-                # ... wait for the last bit of the interval.
+                # ... wait for last bit of interval, otherwise ...
 
                 self._recent_instant = now
 
                 return asyncio.sleep(r / 1_000_000_000).__await__()
 
+            # ... drop into `SKIP`
+
         # `SKIP` behaviour:
         #
-        # T.B.C.
+        # In principle, the algorithm is as simple as to subtract `r` - the
+        # remainder - from the period, obtaining the number of nanoseconds
+        # for the next (asynchronous) sleep in `p_ns`. However, the nature
+        # of asyncio is that we can't always be sure not to be slightly
+        # early, so we must also remember when we last ticked, and guard
+        # against an unwanted burst.
+        #
+        # This is handled by a simple mechanism: if `p_ns` is less than a
+        # fraction of the period, then we add a whole period to it.
 
-        # get the time _now_ and then calculate how much time has
-        # elapsed, ...
+        if not self._recent_instant:
 
-        # ... and from this calculate how long the next wait should be
+            self._recent_instant = now
+
+            return asyncio.sleep(self._period_ns / 1_000_000_000).__await__()
 
         p_ns = self._period_ns - r
-        if p_ns > self._negative_bias:
+        if p_ns > (self._negative_bias * 3 / 2):
 
             p_ns -= self._negative_bias
+
+        if p_ns < (self._period_ns * 1 / 10):
+
+            p_ns += self._period_ns
 
         self._recent_instant = now
 

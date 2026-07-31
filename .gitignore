@@ -7,7 +7,7 @@
 build/
 dist/
 dist-old/
-scratch/
+/scratch/
 
 
 # directories (by pattern)

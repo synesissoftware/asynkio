@@ -179,9 +179,14 @@ def test_Interval_SKIP_second_await_at_period_boundary():
 
 
 def test_Interval_SKIP_await_with_remainder():
+    """
+    First await always sleeps a full period; subsequent awaits target the
+    next period boundary from the reference (period - remainder).
+    """
 
     _, sleeps = _run_interval(
         [
+            Instant(REF),
             Instant(REF),
             Instant(REF + 500_000_000),
         ],
@@ -190,15 +195,21 @@ def test_Interval_SKIP_await_with_remainder():
             missed_tick_behaviour=MissedTickBehaviour.SKIP,
             negative_bias=0,
         ),
+        await_count=2,
     )
 
-    assert [0.5] == sleeps
+    assert [1.0, 0.5] == sleeps
 
 
 def test_Interval_SKIP_applies_negative_bias():
+    """
+    First await sleeps a full period (no bias); later awaits subtract
+    `negative_bias` from the sleep when far enough from the boundary.
+    """
 
     _, sleeps = _run_interval(
         [
+            Instant(REF),
             Instant(REF),
             Instant(REF),
         ],
@@ -207,9 +218,10 @@ def test_Interval_SKIP_applies_negative_bias():
             missed_tick_behaviour=MissedTickBehaviour.SKIP,
             negative_bias=100_000_000,
         ),
+        await_count=2,
     )
 
-    assert [0.9] == sleeps
+    assert [1.0, 0.9] == sleeps
 
 
 def test_Interval_BURST_catch_up_then_wait():
