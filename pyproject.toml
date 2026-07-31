@@ -21,13 +21,15 @@ classifiers = [
 	"Programming Language :: Python :: 3.13",
 	"Programming Language :: Python :: 3.14",
 ]
-dependencies = []
+dependencies = [
+	"diagnosticism>=0.17.0",
+]
 description = "Tokio-like functionality for Python"
 license-files = ["LICENSE"]
 name = "asynkio"
 readme = "README.md"
 requires-python = ">=3.11"
-version = "0.0.9"
+version = "0.1.0"
 
 [project.urls]
 Changelog = "https://github.com/synesissoftware/asynkio/releases"
@@ -38,7 +40,7 @@ Issues = "https://github.com/synesissoftware/asynkio/issues"
 dev = [
 	"aiofiles",
 	"black>=24.1",
-	"diagnosticism >=0.16, <1",
+	"diagnosticism >=0.17, <1",
 	"pyclasp>=0.8.10",
 	"pytest>=8.4.1",
 	"ruff>=0.4.0",
@@ -46,7 +48,7 @@ dev = [
 test = [
 	"aiofiles",
 	"black>=24.1",
-	"diagnosticism >=0.16, <1",
+	"diagnosticism >=0.17, <1",
 	"pyclasp>=0.8.10",
 	"pytest>=8.4.1",
 	"ruff>=0.4.0",
@@ -56,7 +58,7 @@ test = [
 dev = [
 	"aiofiles",
 	"black>=24.1",
-	"diagnosticism >=0.16, <1",
+	"diagnosticism >=0.17, <1",
 	"pyclasp>=0.8.10",
 	"pytest>=8.4.1",
 	"ruff>=0.4.0",

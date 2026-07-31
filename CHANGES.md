@@ -1,6 +1,12 @@
 # **asynkio** Changes
 
 
+## 0.1.0 - 1st August 2026
+
+* `Duration` string formatting now delegates to `diagnosticism.nanoseconds_to_string()` (requires **diagnosticism** >= 0.16.0);
+* removed duplicated duration formatting logic from `asynkio.time.types`;
+
+
 ## 0.0.9 - 14th July 2026
 
 * changes to `SKIP` (and `BURST`) functionality to provide more even behaviour;

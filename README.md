@@ -21,6 +21,7 @@ Tokio-like functionality for Python
   - [Where to get help](#where-to-get-help)
   - [Contribution guidelines](#contribution-guidelines)
   - [Dependencies](#dependencies)
+    - [Runtime Dependencies (aka "Normal Dependencies")](#runtime-dependencies-aka-normal-dependencies)
     - [Efferent (fan-out)](#efferent-fan-out)
       - [Development Dependencies](#development-dependencies)
     - [Afferent (fan-in)](#afferent-fan-in)
@@ -105,15 +106,19 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 
 ### Dependencies
 
-**asynkio** has no runtime dependencies beyond the **Python** standard
-library (`asyncio`).
+#### Runtime Dependencies (aka "Normal Dependencies")
+
+**asynkio** depends on:
+
+* [**Diagnosticism.Python**](https://github.com/synesissoftware/Diagnosticism.Python/) for duration string formatting;
+* the **Python** standard library (`asyncio`) for async timers;
 
 
 #### Efferent (fan-out)
 
 Libraries upon which **asynkio** depends:
 
-None.
+* [**diagnosticism**](https://pypi.org/project/diagnosticism/) (>= 0.16.0) — `Duration` string formatting via `nanoseconds_to_string()`;
 
 
 ##### Development Dependencies
