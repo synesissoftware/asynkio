@@ -1,0 +1,2 @@
+asynkio provides Tokio-like asynchronous functionality for Python
+Copyright (c) 2025-2026, Matthew Wilson and Synesis Information Systems
