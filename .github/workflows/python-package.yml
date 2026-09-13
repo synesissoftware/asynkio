@@ -8,17 +8,12 @@ on:
     branches:
       - master
       - dev
-      - ci2
-      - split
-      - 'bugfix/**'
-      - 'chore/**'
-      - 'feature/**'
-      - 'fix/**'
-      - 'refactor/**'
+      - boilerplate
+      - idiomatic
+      - rc1
+      - rc2
+      - rc3
   pull_request:
-    branches:
-      - master
-      - dev
 
 jobs:
   lint:
