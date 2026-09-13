@@ -1,4 +1,4 @@
-# asynkio - README <!-- omit in toc -->
+# asynkio <!-- omit in toc -->
 
 Tokio-like functionality for Python
 
@@ -11,7 +11,7 @@ Tokio-like functionality for Python
 [![PyPI project](https://img.shields.io/badge/documentation-PyPI-lightgrey)](https://pypi.org/project/asynkio/)
 
 
-## Table of contents <!-- omit in toc -->
+## Table of Contents <!-- omit in toc -->
 
 - [Introduction](#introduction)
 - [Installation \& Usage](#installation--usage)
@@ -21,9 +21,8 @@ Tokio-like functionality for Python
   - [Where to get help](#where-to-get-help)
   - [Contribution guidelines](#contribution-guidelines)
   - [Dependencies](#dependencies)
-    - [Runtime Dependencies (aka "Normal Dependencies")](#runtime-dependencies-aka-normal-dependencies)
     - [Efferent (fan-out)](#efferent-fan-out)
-      - [Development Dependencies](#development-dependencies)
+    - [Development Dependencies](#development-dependencies)
     - [Afferent (fan-in)](#afferent-fan-in)
   - [Related projects](#related-projects)
   - [License](#license)
@@ -106,22 +105,15 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 
 ### Dependencies
 
-#### Runtime Dependencies (aka "Normal Dependencies")
-
-**asynkio** depends on:
-
-* [**Diagnosticism.Python**](https://github.com/synesissoftware/Diagnosticism.Python/) for duration string formatting;
-* the **Python** standard library (`asyncio`) for async timers;
-
 
 #### Efferent (fan-out)
 
-Libraries upon which **asynkio** depends:
+* [**diagnosticism**](https://pypi.org/project/diagnosticism/) (>= 0.16.0)
+  — `Duration` string formatting via `nanoseconds_to_string()`;
+* **Python** standard library (`asyncio`) — async timers;
 
-* [**diagnosticism**](https://pypi.org/project/diagnosticism/) (>= 0.16.0) — `Duration` string formatting via `nanoseconds_to_string()`;
 
-
-##### Development Dependencies
+#### Development Dependencies
 
 * [**aiofiles**](https://pypi.org/project/aiofiles/) — development and demonstration tooling;
 * [**black**](https://pypi.org/project/black/) — code formatter;
@@ -132,8 +124,6 @@ Libraries upon which **asynkio** depends:
 
 
 #### Afferent (fan-in)
-
-Projects that depend on **asynkio**:
 
 None (currently).
 

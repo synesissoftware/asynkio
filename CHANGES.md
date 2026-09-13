@@ -1,4 +1,4 @@
-# **asynkio** Changes
+# asynkio - Changes <!-- omit in toc -->
 
 
 ## 0.1.0 - 1st August 2026
@@ -74,11 +74,6 @@
 
 * boilerplate;
 * GitHub Actions;
-
-
-## previous versions
-
-T.B.C.
 
 
 <!-- ########################### end of file ########################### -->

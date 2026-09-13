@@ -1,4 +1,4 @@
-# asynkio Examples
+# asynkio - Examples <!-- omit in toc -->
 
 | Name | Source & Description | Summary |
 | --- | --- | --- |
