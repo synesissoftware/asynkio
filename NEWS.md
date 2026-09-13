@@ -1,8 +1,9 @@
 # asynkio - News <!-- omit in toc -->
 
-| Date             | News Item                                                                              | Details                                                             |
-| ---------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| 1st August 2026  | [**asynkio** 0.1.0](https://github.com/synesissoftware/asynkio/releases/tag/0.1.0)     | Duration formatting via **diagnosticism** `nanoseconds_to_string()` |
+| Date                | News Item                                                                              | Details                                                             |
+| ------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| 14th September 2026 | [**asynkio** 0.1.1](https://github.com/synesissoftware/asynkio/releases/tag/0.1.1)     | Packaging / CI modernisation                                        |
+| 1st August 2026     | [**asynkio** 0.1.0](https://github.com/synesissoftware/asynkio/releases/tag/0.1.0)     | Duration formatting via **diagnosticism** `nanoseconds_to_string()` |
 | 14th July 2026   | [**asynkio** 0.0.9](https://github.com/synesissoftware/asynkio/releases/tag/0.0.9)     | More even `SKIP` / `BURST` behaviour                                |
 | 12th July 2026   | [**asynkio** 0.0.8](https://github.com/synesissoftware/asynkio/releases/tag/0.0.8)     | CI **ruff** / **black** checks                                      |
 | 12th July 2026   | [**asynkio** 0.0.7](https://github.com/synesissoftware/asynkio/releases/tag/0.0.7)     | Split `Duration` / `Instant` implementation and tests               |

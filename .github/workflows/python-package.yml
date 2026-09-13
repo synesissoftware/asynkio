@@ -90,4 +90,4 @@ jobs:
         python -m pip install build
         python -m build
         python -m pip install dist/asynkio-*.whl
-        python -c "import asynkio; assert asynkio.__version__ == '0.1.0'; print(asynkio.__version__)"
+        python -c "import asynkio; assert asynkio.__version__ == '0.1.1'; print(asynkio.__version__)"

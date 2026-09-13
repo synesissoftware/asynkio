@@ -1,6 +1,11 @@
 # asynkio - Changes <!-- omit in toc -->
 
 
+## 0.1.1 - 14th September 2026
+
+* packaging, documentation, and CI modernisation (PEP 621 hygiene, canonical CI, **ruff**, helper scripts);
+
+
 ## 0.1.0 - 1st August 2026
 
 * `Duration` string formatting now delegates to `diagnosticism.nanoseconds_to_string()` (requires **diagnosticism** >= 0.16.0);
