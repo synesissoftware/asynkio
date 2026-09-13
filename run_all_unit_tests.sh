@@ -149,6 +149,18 @@ else
 
   # try and find a suitable command
 
+  # Prefer a project-local venv when present (avoids Apple/Xcode python3 on
+  # PATH, which must not be used for local install/test).
+  if [ "x_$PythonCommandPath" = "x_" ]; then
+
+    if [ -x "$Dir/.venv/bin/python" ]; then
+
+      PythonCommandPath="$Dir/.venv/bin/python"
+
+      echo "found project venv python '$PythonCommandPath'"
+    fi
+  fi
+
   if [ "x_$PythonCommandPath" = "x_" ]; then
 
     if [ "y_$PYTHON_COMMAND_PATH" != "y_" ]; then
