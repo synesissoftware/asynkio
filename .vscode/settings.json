@@ -1,22 +1,43 @@
 {
+	"[json]": {
+		"editor.tabSize": 2,
+	},
+	"[markdown]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+	},
 	"[python]": {
 		"diffEditor.ignoreTrimWhitespace": false,
 		"editor.insertSpaces": true,
-		"editor.rulers": [ 72, 76, 120 ],
+		"editor.rulers": [ 50, 60, 76, 120 ],
 		"editor.tabSize": 4,
 	},
+	"[shellscript]": {
+		"editor.insertSpaces": true,
+		"editor.rulers": [ 60, 76 ],
+		"editor.tabSize": 2,
+	},
+	"[toml]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 2,
+	},
+	"[yaml]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+	},
+	"editor.detectIndentation": false,
 	"editor.insertSpaces": false,
 	"editor.renderWhitespace": "all",
+	"editor.rulers": [ 76 ],
 	"editor.tabSize": 2,
 	"files.exclude": {
-		"**/__pycache__": true,
 		"**/*.egg-info": true,
 		"**/*.swp": true,
+		"**/__pycache__": true,
 	},
-	"editor.rulers": [ 76 ],
 	"files.insertFinalNewline": true,
 	"files.trimTrailingWhitespace": true,
+	"git.mergeEditor": false,
 	"python.analysis.typeCheckingMode": "standard",
 	"python.languageServer": "Pylance",
 }
-

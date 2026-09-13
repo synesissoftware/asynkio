@@ -1,12 +1,9 @@
 *.c linguist-language=C
-*.h linguist-language=C
-
 *.cpp linguist-language=C++
+*.h linguist-language=C
 *.hpp linguist-language=C++
-
-*.py linguist-language=Python
-
 *.html linguist-detectable=false
+*.py linguist-language=Python
 *.sh linguist-detectable=false
+*.vimrc linguist-detectable=false
 makefile linguist-detectable=false
-
