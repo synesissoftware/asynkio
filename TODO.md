@@ -1,8 +1,19 @@
-# TODO <!-- omit from toc -->
+# asynkio - TODO <!-- omit in toc -->
 
 
-* [ ] T.B.C.;
+## Functional improvements
+
+* \<none>
+
+
+## Performance improvements
+
+* \<none>
+
+
+## Packaging improvements
+
+* \<none>
 
 
 <!-- ########################### end of file ########################### -->
-

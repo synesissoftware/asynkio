@@ -1,4 +1,3 @@
-include LICENSE README.md CHANGES.md EXAMPLES.md NOTES.md TODO.md
+include AUTHORS.md CHANGES.md EXAMPLES.md LICENSE NEWS.md NOTES.md README.md TODO.md
 recursive-include examples *.py *.md
 recursive-include tests *.py
-

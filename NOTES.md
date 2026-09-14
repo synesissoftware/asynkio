@@ -1,4 +1,4 @@
-# asynkio - NOTES <!-- omit in toc -->
+# asynkio - Notes <!-- omit in toc -->
 
 
 ## Testing
